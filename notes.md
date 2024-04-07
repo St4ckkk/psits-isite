@@ -103,3 +103,29 @@ for rows in range(n):                                                    1 1
   print()
 
 ```
+
+
+### Pascal Triangle
+
+if dont want a pyramid, remove the first loop
+
+```py
+
+n = 5
+for i in range(1, n+1):
+    for j in range(0, n-i+1):
+        print(' ', end='')
+                                                                      1
+    # first element is always 1                                      1 1
+    basis = 1                                                       1 2 1
+    for j in range(1, i+1):                                        1 3 3 1
+                                                                  1 4 6 4 1
+        # first value in a line is always 1
+        print(' ', basis, sep='', end='')
+
+        # using Binomial Coefficient
+        # basis = basis multiply (i - j) then divide 
+        basis = basis * (i - j) // j
+    print()
+
+```
