@@ -59,7 +59,7 @@ If decrement, use the len as start and step is -1 / range(len(text), 0, -1):
 ```py
 rows = 5
 cols = 8
-                                                                          * * * * * * * * 
+                                                                              * * * * * * * * 
     for i in range(rows):                                                     *             * 
         for j in range(cols):                                                 *             * 
             if i == 0 or i == rows - 1 or j == 0 or j == cols - 1:            *             * 
@@ -93,9 +93,9 @@ If printing symbol, change the print to *, etc
 ```py                                                              
     n = 10                                                                  0   0
     for rows in range(n):                                                    1 1 
-    for cols in range(n):                                                   2  
+    for cols in range(n):                                                     2  
         if((rows == cols) or (rows+cols)==n-1 ):                             1 1 
-        print(min(rows, n - rows - 1),end="")                             0   0
+        print(min(rows, n - rows - 1),end="")                               0   0
         else:
         print(" ",end="")
     print()
@@ -113,11 +113,11 @@ n = 5
     for i in range(1, n+1):
         for j in range(0, n-i+1):
             print(' ', end='')
-                                                                        1
+                                                                          1
         # first element is always 1                                      1 1
         basis = 1                                                       1 2 1
         for j in range(1, i+1):                                        1 3 3 1
-                                                                    1 4 6 4 1
+                                                                      1 4 6 4 1
             # first value in a line is always 1
             print(' ', basis, sep='', end='')
 
