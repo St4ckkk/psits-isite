@@ -165,7 +165,7 @@ this one specifically for diamond
 ```py
     numbers = [5,4,2,5,10]
 
-    print(max(numbers))
+    print(max(numbers)) // 10
 ```
 
 ### Swiper Swapper
@@ -178,7 +178,7 @@ this one specifically for diamond
 
     numbers.append(popNumber)
 
-    print(*numbers)
+    print(*numbers) // 9 7 5 8
 
 ```
 
@@ -187,7 +187,7 @@ this one specifically for diamond
 ``` py
     numbers = [8,9,7,5]
 
-    print(*reversed(numbers))
+    print(*reversed(numbers)) // 5, 7, 9, 8
 ```
 
 
@@ -201,7 +201,7 @@ this one specifically for diamond
     unique = list(filter(lambda x: numbers.count(x) == 1, numbers))
 
     if len(unique) > 0:
-    print(unique[0])
+    print(unique[0]) // 5
 
 ```
 
@@ -216,7 +216,7 @@ this one specifically for diamond
     for i in reversed(list_binary):
         result += int(i) * 2 ** count
         count += 1
-    print(result)
+    print(result) // 43
 
 ```
 
@@ -229,7 +229,7 @@ this one specifically for diamond
     for i in range(num + 1):
         result = result + ((i) * i)
 
-    print(result)
+    print(result) // 285
 
 ```
 
