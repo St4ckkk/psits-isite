@@ -61,12 +61,45 @@ for i in range(1, len(text) + 1):
 ```py
 rows = 5
 cols = 8
-
-for i in range(rows):
-    for j in range(cols):
-        if i == 0 or i == rows - 1 or j == 0 or j == cols - 1:
-            print("*", end=" ")
+                                                                          * * * * * * * * 
+for i in range(rows):                                                     *             * 
+    for j in range(cols):                                                 *             * 
+        if i == 0 or i == rows - 1 or j == 0 or j == cols - 1:            *             * 
+            print("*", end=" ")                                           * * * * * * * * 
         else:
             print(" ", end=" ")
     print()
+```
+
+### Zigzag Pattern
+```py
+def zigzag_pattern(rows, cols):                                             * * * * * 
+    for i in range(rows):                                                           *
+        for j in range(cols):                                               * * * * * 
+            if i % 2 == 0:                                                          *
+                print("*", end=" ")                                         * * * * *
+            else:
+                if j == cols - 1 and i % 2 != 0:
+                    print("*", end="")
+                else:
+                    print(" ", end=" ")
+        print()
+
+zigzag_pattern(5, 5)
+
+```
+
+
+### Cross Pattern (x)
+If printing symbol, change the print to *, etc
+```py                                                              
+n = 10                                                                  0   0
+for rows in range(n):                                                    1 1 
+  for cols in range(n):                                                   2  
+    if((rows == cols) or (rows+cols)==n-1 ):                             1 1 
+      print(min(rows, n - rows - 1),end="")                             0   0
+    else:
+      print(" ",end="")
+  print()
+
 ```
