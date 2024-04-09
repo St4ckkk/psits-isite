@@ -21,13 +21,13 @@ for (int i = 0; i < 5; i++) {
 
 ### Fibonacci Seq
 ```c
- int firstTerm = 0, secondTerm = 1, nextTerm;
+ int first = 0, second = 1, next;
 
  for (int i = 0; i < 5; i++) {
         printf("%d ", firstTerm);
-        nextTerm = firstTerm + secondTerm;
-        firstTerm = secondTerm;
-        secondTerm = nextTerm;
+        next = first + second;
+        first = second;
+        second = next;
     }
 
 ```
