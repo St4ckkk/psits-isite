@@ -232,5 +232,13 @@ this one specifically for diamond
     print(result) // 285
 
 ```
+### 3rd Largest/Highest Number
 
+```py
+
+numbers = [4,3,2,1,5]
+sortt = sorted(numbers, reverse = True)
+print(sortt[2])
+
+```
 
