@@ -46,3 +46,30 @@ for(i=1; i<=N; i++)
         printf("\n");
     }
 ```
+
+### Pascal Pattern
+
+```c
+
+int pascal(int n, int k) {
+    int res = 1;
+    if (k > n - k)
+        k = n - k;
+    for (int i = 0; i < k; ++i) {
+        res *= (n - i);
+        res /= (i + 1);
+    }
+    return res;
+}
+
+int n = 5; 
+    
+printf("Pascal's Triangle Pattern:\n");
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j <= i; j++) {
+            printf("%d ", pascal(i, j));
+        }
+        printf("\n");
+    }
+
+```
