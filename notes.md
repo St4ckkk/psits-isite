@@ -142,7 +142,36 @@ this one specifically for diamond
         print(" " * (n - i - 1) + "*" * (2 * i + 1))
         
 ```
+### Palindromic Number Diamond Pattern
+```py
+    # Function to check if a number is a palindrome
+    def is_palindrome(num):
+        return str(num) == str(num)[::-1]
 
+    # Function to generate a row of the diamond pattern
+    def generate_row(n, i):
+        # Leading spaces for center alignment
+        spaces = '_' * (n - i)    
+        # Generate a list of palindrome numbers within the range [1, i]
+        palindromes = [str(num) for num in range(1, i + 1) if is_palindrome(num)]    
+        # Concatenate leading spaces, palindrome numbers, and reversed palindrome numbers                                                                       
+        return spaces + ''.join(palindromes) + ''.join(reversed(palindromes[:-1]))
+                                                                                                                                                
+    # Function to generate the diamond pattern
+    def generate_diamond(n):
+        # Generate upper half of the diamond
+        for i in range(1, n + 1):
+            print(generate_row(n, i))
+
+        # Generate lower half of the diamond
+        for i in range(n - 1, 0, -1):
+            print(generate_row(n, i))
+
+
+    n = int(input("Enter the value of n: "))
+    generate_diamond(n)
+
+```
 # Previous Psits
 
 ### Check Prime no.
