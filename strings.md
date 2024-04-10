@@ -1407,3 +1407,210 @@ int main() {
 }
 
 ```
+
+### Remove Outermost Parentheses
+
+```c
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+char *removeOuterParentheses(char *s) {
+    int n = strlen(s);
+    char *result = (char *)malloc((n + 1) * sizeof(char)); // Allocate memory for the result string
+    int counter = 0;
+    int resultIndex = 0;
+
+    // Iterate through each character in the string
+    for (int i = 0; i < n; i++) {
+        // For every '(', increment the counter
+        if (s[i] == '(' && counter++ > 0) {
+            result[resultIndex++] = '('; // Add '(' to the result string
+        }
+        // For every ')', decrement the counter
+        if (s[i] == ')' && --counter > 0) {
+            result[resultIndex++] = ')'; // Add ')' to the result string
+        }
+    }
+
+    result[resultIndex] = '\0'; // Null-terminate the result string
+    return result;
+}
+
+int main() {
+    char s1[] = "(()())(())";
+    printf("Example 1: %s\n", removeOuterParentheses(s1)); // Output: "()()()"
+
+    char s2[] = "(()())(())(()(()))";
+    printf("Example 2: %s\n", removeOuterParentheses(s2)); // Output: "()()()()(())"
+
+    char s3[] = "()()";
+    printf("Example 3: %s\n", removeOuterParentheses(s3)); // Output: ""
+
+    return 0;
+}
+
+```
+
+### COUNT ASTERISK
+
+```c
+
+#include <stdio.h>
+#include <string.h>
+
+int countAsterisks(char *s) {
+    int count = 0;
+    int insideBars = 0; // Flag to track if we are inside '|' characters
+
+    // Iterate through each character in the string
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] == '|') {
+            insideBars = !insideBars; // Toggle the insideBars flag when encountering '|'
+        } else if (s[i] == '*' && !insideBars) {
+            count++; // Increment the count if '*' is encountered outside '|'
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    char s1[] = "l|*e*et|c**o|*de|";
+    printf("Example 1: %d\n", countAsterisks(s1)); // Output: 2
+
+    char s2[] = "iamprogrammer";
+    printf("Example 2: %d\n", countAsterisks(s2)); // Output: 0
+
+    char s3[] = "yo|uar|e**|b|e***au|tifu|l";
+    printf("Example 3: %d\n", countAsterisks(s3)); // Output: 5
+
+    return 0;
+}
+
+```
+
+
+### MAKE SMALLEST PALINDROME
+
+```c
+
+#include <stdio.h>
+#include <string.h>
+
+char* makeSmallestPalindrome(char* s) {
+    int l = 0, r = strlen(s)-1;
+    while (l < r) {
+		if (s[l] < s[r]) {
+			s[r] = s[l];
+		} else {
+			s[l] = s[r];
+		}
+        l++;
+        r--;
+    }
+    return s;
+}
+
+int main() {
+    char s1[] = "egcfe";
+    printf("Example 1: %s\n", makeSmallestPalindrome(s1)); // Output: "efcfe"
+
+    char s2[] = "abcd";
+    printf("Example 2: %s\n", makeSmallestPalindrome(s2)); // Output: "abba"
+
+    char s3[] = "seven";
+    printf("Example 3: %s\n", makeSmallestPalindrome(s3)); // Output: "neven"
+
+    return 0;
+}
+
+```
+
+
+### REPLACE ALL DIGITS WITH CHARACTERS
+
+```c
+
+#include <stdio.h>
+#include <string.h>
+
+char shiftChar(char c, int shift) {
+    return c + shift;
+}
+
+char* replaceDigits(char* s) {
+    int len = strlen(s);
+    for (int i = 1; i < len; i+=2) {
+        s[i] += s[i-1] - '0';
+    }
+    return s;
+}
+
+int main() {
+    char s1[] = "a1c1e1";
+    printf("Example 1: %s\n", replaceDigits(s1)); // Output: "abcdef"
+
+    char s2[] = "a1b2c3d4e";
+    printf("Example 2: %s\n", replaceDigits(s2)); // Output: "abbdcfdhe"
+
+    return 0;
+}
+
+```
+
+
+### Find Maximum Number of String Pairs
+
+```c
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int maximumNumberOfStringPairs(char **words, int wordsSize) {
+    int pairsCntr = 0;
+    int i, j;
+
+    for (i = 0; i < wordsSize; i++) {
+        char *reversed_word = malloc(3 * sizeof(char));
+        if (reversed_word == NULL) {
+            fprintf(stderr, "Memory allocation failed\n");
+            exit(1);
+        }
+
+        strcpy(reversed_word, words[i]);
+        char temp = reversed_word[0];
+        reversed_word[0] = reversed_word[1];
+        reversed_word[1] = temp;
+
+        for (j = i + 1; j < wordsSize; j++) {
+            if (strcmp(reversed_word, words[j]) == 0) {
+                pairsCntr++;
+            }
+        }
+
+        free(reversed_word);
+    }
+
+    return pairsCntr;
+}
+
+
+int main() {
+    // Example test cases
+    char *words1[] = {"cd","ac","dc","ca","zz"};
+    int arrayLength = sizeof(words1) / sizeof(words1[0]); 
+    int pairs1 = maximumNumberOfStringPairs(words1, arrayLength);
+    printf("Pairs in words1: %d\n", pairs1); // Expected output: 2
+
+    char *words2[] = {"ab","ba","cc"};
+    int arrayLength2 = sizeof(words2) / sizeof(words2[0]); 
+    int pairs2 = maximumNumberOfStringPairs(words2, arrayLength2);
+    printf("Pairs in words2: %d\n", pairs2); // Expected output: 1
+
+    return 0;
+}
+
+```
