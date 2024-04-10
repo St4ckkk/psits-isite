@@ -120,7 +120,7 @@ int numbers[] = {9, 9, 9, 5};
 
 ```
 
-# Binary to Decimal  to Binary
+# Binary to Decimal to Binary
 
 ```c
 

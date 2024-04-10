@@ -284,3 +284,338 @@ int main() {
 }
 
 ```
+
+PATTERN IN COMPETITIVE PROGRAMMING LIKE NUMBER PATTERN, STRING PATTERN, PASCAL PATTERN, ZIGZAG PATTERN, TINA LOVES A PATTERN, COUNT DECIMAL PATTERN, ETC.
+
+
+
+# STAR PATTERNS
+
+
+### SQAURE STAR PATTERN
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    int i, j, N;
+
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    // Iterate through N rows
+    for(i=1; i<=N; i++)
+    {
+        // Print N-i spaces
+        for(j=1; j<=N-i; j++)
+        {
+            printf(" ");
+        }
+
+        // Print i stars
+        for(j=1; j<=N; j++)
+        {
+            printf("*");
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### HOLLOW SQUARE STAR PATTERN
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    int i, j, N;
+
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    // Iterate through N rows
+    for(i=1; i<=N; i++)
+    {
+        // Print stars for each solid row
+        if(i==1 || i==N)
+        {
+            for(j=1; j<=N; j++)
+            {
+                printf("*");
+            }
+        }
+        else
+        {
+            // Print stars for hollow rows
+            for(j=1; j<=N; j++)
+            {
+                if(j==1 || j==N)
+                {
+                    printf("*");
+                }
+                else
+                {
+                    printf(" ");
+                }
+            }
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### INVERTED HALF PYRAMID STAR PATTERN
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    int i, j, N;
+
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    // Iterate through N rows
+    for(i=N; i>=1; i--)
+    {
+        // Print i stars
+        for(j=1; j<=i; j++)
+        {
+            printf("*");
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### HALF PYRAMID STAR PATTERN
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    int i, j, N;
+
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    // Iterate through N rows
+    for(i=1; i<=N; i++)
+    {
+        // Print i stars
+        for(j=1; j<=i; j++)
+        {
+            printf("*");
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### MIRRORED HALF PYRAMID STAR PATTERN
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    int i, j, N;
+
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    // Iterate through N rows
+    for(i=1; i<=N; i++)
+    {
+        // Print N-i spaces
+        for(j=1; j<=N-i; j++)
+        {
+            printf(" ");
+        }
+
+        // Print i stars
+        for(j=1; j<=i; j++)
+        {
+            printf("*");
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### MIRRORED HALF PYRAMID STAR PATTERN
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    int i, j, N;
+
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    // Iterate through N rows
+    for(i=1; i<=N; i++)
+    {
+        // Print N-i spaces
+        for(j=1; j<=N-i; j++)
+        {
+            printf(" ");
+        }
+
+        // Print i stars
+        for(j=1; j<=i; j++)
+        {
+            printf("*");
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### HALF PYRAMID STAR PATTERN
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    int i, j, N;
+
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    // Iterate through N rows
+    for(i=1; i<=N; i++)
+    {
+        // Print i stars
+        for(j=1; j<=i; j++)
+        {
+            printf("*");
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### PYRAMID STAR PATTERN
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    int i, j, N;
+
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    // Iterate through N rows
+    for(i=1; i<=N; i++)
+    {
+        // Print N-i spaces
+        for(j=1; j<=N-i; j++)
+        {
+            printf(" ");
+        }
+
+        // Print i stars
+        for(j=1; j<=2*i-1; j++)
+        {
+            printf("*");
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### INVERTED PYRAMID STAR PATTERN
+
+```c
+
+#include <stdio.h>
+
+int main() {
+    int i, j, N;
+
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    // Iterate through N rows
+    for(i=N; i>=1; i--)
+    {
+        // Print N-i spaces
+        for(j=1; j<=N-i; j++)
+        {
+            printf(" ");
+        }
+
+        // Print i stars
+        for(j=1; j<=2*i-1; j++)
+        {
+            printf("*");
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
