@@ -1028,3 +1028,267 @@ int main() {
 }
 
 ```
+
+### FIND THE FIRST PALINDROME IN ARRAY
+
+```C
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+bool isPalindrome(char *str) {
+    int len = strlen(str);
+    for (int i = 0; i < len / 2; i++) {
+        if (str[i] != str[len - i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+char *firstPalindrome(char **words, int wordsSize) {
+    for (int i = 0; i < wordsSize; i++) {
+        if (isPalindrome(words[i])) {
+            return words[i];
+        }
+    }
+    return "";
+}
+
+int main() {
+    char *words1[] = {"abc", "car", "ada", "racecar", "cool"};
+    int wordsSize1 = sizeof(words1) / sizeof(words1[0]);
+    printf("Example 1: %s\n", firstPalindrome(words1, wordsSize1)); // Output: "ada"
+
+    char *words2[] = {"notapalindrome", "racecar"};
+    int wordsSize2 = sizeof(words2) / sizeof(words2[0]);
+    printf("Example 2: %s\n", firstPalindrome(words2, wordsSize2)); // Output: "racecar"
+
+    char *words3[] = {"def", "ghi"};
+    int wordsSize3 = sizeof(words3) / sizeof(words3[0]);
+    printf("Example 3: %s\n", firstPalindrome(words3, wordsSize3)); // Output: ""
+
+    return 0;
+}
+
+```
+
+### STRING TO LOWER CASE
+
+```c
+
+#include <stdio.h>
+#include <ctype.h>
+
+void toLowerCase(char *s) {
+    while (*s != '\0') {
+        *s = tolower(*s); 
+        s++; 
+    }
+}
+
+int main() {
+    // Test cases
+    char s1[] = "Hello";
+    toLowerCase(s1);
+    printf("Example 1: %s\n", s1); // Output: "hello"
+
+    char s2[] = "here";
+    toLowerCase(s2);
+    printf("Example 2: %s\n", s2); // Output: "here"
+
+    char s3[] = "LOVELY";
+    toLowerCase(s3);
+    printf("Example 3: %s\n", s3); // Output: "lovely"
+
+    return 0;
+}
+```
+
+
+### MAXIMUM ODD BINARY
+
+```c
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *maximumOddNumber(char *s) {
+    int n = strlen(s);
+
+    // Find the rightmost '1' in the string
+    int idx = -1;
+    for (int i = n - 1; i >= 0; i--) {
+        if (s[i] == '1') {
+            idx = i;
+            break;
+        }
+    }
+
+    // If no '1's found, return the original string
+    if (idx == -1) {
+        return s;
+    }
+
+    // Sort the remaining bits in decreasing order
+    for (int i = 0; i < idx; i++) {
+        for (int j = i + 1; j < idx; j++) {
+            if (s[i] < s[j]) {
+                char temp = s[i];
+                s[i] = s[j];
+                s[j] = temp;
+            }
+        }
+    }
+
+    return s;
+}
+
+int main() {
+    char s1[] = "010";
+    printf("Example 1: %s\n", maximumOddNumber(s1)); // Output: "001"
+
+    char s2[] = "0101";
+    printf("Example 2: %s\n", maximumOddNumber(s2)); // Output: "1001"
+
+    return 0;
+}
+
+```
+
+### CHECK IF PANGRAM IF GOT ALL THE ALPHABETS
+
+```c
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+bool checkIfPangram(char *sentence) {
+    bool seen[26] = {false}; 
+    
+    for (int i = 0; sentence[i] != '\0'; i++) {
+        if (sentence[i] >= 'a' && sentence[i] <= 'z') {
+            seen[sentence[i] - 'a'] = true;
+        }
+    }
+    
+    for (int i = 0; i < 26; i++) {
+        if (!seen[i]) {
+            return false; // If any flag is false, return false
+        }
+    }
+    
+    return true; // If all flags are true, return true
+}
+
+int main() {
+    // Test cases
+    char sentence1[] = "thequickbrownfoxjumpsoverthelazydog";
+    printf("Example 1: %s\n", checkIfPangram(sentence1) ? "true" : "false"); // Output: true
+    
+    char sentence2[] = "abcdefghijklmnopqrstuvwxyz";
+    printf("Example 2: %s\n", checkIfPangram(sentence2) ? "true" : "false"); // Output: false
+    
+    return 0;
+}
+
+```
+
+### FAULTY KEYBOARD
+
+```C
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void reverse(char* s, int idx) {
+    int l = 0, r = idx;
+    while (l < r) {
+        char t = s[l];
+        s[l] = s[r];
+        s[r] = t;
+        l++;
+        r--;
+    }
+}
+
+char* finalString(char* s) {
+    int len = strlen(s), ans_idx = 0;
+    char* ans = (char*) calloc(len+1, sizeof(char));
+    for (int i = 0; i < len; i++) {
+        if (i > 0 && s[i] == 'i') {
+            reverse(ans, ans_idx-1);
+            continue;
+        }
+        ans[ans_idx++] = s[i];
+    }
+    return ans;
+}
+
+int main() {
+    
+    char *result = finalString("string");
+    printf("output: %s", result); // rtsng
+    return 0;
+}
+```
+
+### REVERSE STRING STILL IN ORDER
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* reverseWords(char* s) {
+    int start = 0;
+    int end = 0;
+    int len = strlen(s);
+    char* ret = malloc((len + 1) * sizeof(char)); 
+    if (ret == NULL) {
+        printf("Memory allocation failed!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    while (s[end] != '\0') {
+        if (s[end] == ' ') {
+            int left = start;
+            int right = end - 1;
+            while (left < right) {
+                char temp = s[left];
+                s[left] = s[right];
+                s[right] = temp;
+                left++;
+                right--;
+            }
+            start = end + 1; 
+        }
+        end++;
+    }
+
+    int left = start;
+    int right = end - 1;
+    while (left < right) {
+        char temp = s[left];
+        s[left] = s[right];
+        s[right] = temp;
+        left++;
+        right--;
+    }
+
+    strcpy(ret, s);
+
+    return ret;
+}
+
+int main() {
+    char param_1[] = "Hello World!";
+    char* ret = reverseWords(param_1);
+    printf("%s\n", ret);
+    free(ret); 
+    return 0;
+}
+
+```
