@@ -1,18 +1,13 @@
 # STRINGS
 
 ### REPLACE CHARACTER
-
-
 ```c
-
 i: Reydel
 o: R*yd*l
-
 #include <stdio.h>
 #include <string.h>
 
 void replaceAll(char *str, char oldChar, char newChar);
-
 int main() {
     char str[100] = "Reydel";
     char oldChar = 'e', newChar = '*';
@@ -23,7 +18,6 @@ int main() {
 
     return 0;
 }
-
 void replaceAll(char *str, char oldChar, char newChar) {
     while (*str != '\0') {
         if (*str == oldChar) {
@@ -33,13 +27,10 @@ void replaceAll(char *str, char oldChar, char newChar) {
     }
 }
 
-
 ```
 
 ### REPLACE FIRST / LAST CHARACTER
-
 ```C
-
 FIRST
 
 I: REYDEL
@@ -53,16 +44,11 @@ void replaceFirst(char *str, char newChar);
 int main() {
     char str[100] = "REYDEL";
     char newChar = '4'; 
-
     printf("String before replacing: %s\n", str);
-
     replaceFirst(str, newChar);
-
     printf("String after replacing first character with '%c': %s\n", newChar, str);
-
     return 0;
 }
-
 void replaceFirst(char *str, char newChar) {
     if (str[0] != '\0') {
         str[0] = newChar;
@@ -80,36 +66,27 @@ void replaceLast(char *str, char newChar) {
         str[length - 1] = newChar;
     }
 }
-
 ```
-
 
 ### REVERSE STRING
 
 ```C
-
 #include <stdio.h>
 #include <string.h>
-
 int main() {
     char str[101];
     scanf("%s", str);
     int len = strlen(str);
-    
     // Reverse the string
     for (int i = len - 1; i >= 0; i--) {
         printf("%c", str[i]);
     }
-    
     return 0;
 }
 
 ```
-
 ### CHECK OF BOTH STRINGS ARE ANAGRAM
-
 ```C
-
 #include <stdio.h>
 #include <string.h>
 
@@ -140,7 +117,6 @@ int main() {
             }
         }
     }
-    
     // Check if sorted strings are equal
     for (int i = 0; i < len1; i++) {
         if (str1[i] != str2[i]) {
@@ -171,7 +147,7 @@ int lengthOfLongestSubstring(char *s) {
     int n = strlen(s);
     int longest = 0;
     int start = 0;
-    int charIndex[256]; // Assuming ASCII characters
+    int charIndex[256]; 
 
     memset(charIndex, -1, sizeof(charIndex));
 
@@ -266,25 +242,21 @@ int main() {
 ```C
 
 #include <stdio.h>
-#include <ctype.h> // for isdigit
+#include <ctype.h> 
 
 int myAtoi(char *s) {
-    int sign = 1; // 1 for positive, -1 for negative
+    int sign = 1; 
     int result = 0;
     int i = 0;
 
-    // Skipping leading whitespace
     while (s[i] == ' ')
         i++;
 
-    // Handling optional sign
     if (s[i] == '+' || s[i] == '-') {
         sign = (s[i++] == '-') ? -1 : 1;
     }
 
-    // Processing digits
     while (isdigit(s[i])) {
-        // Handling overflow/underflow
         if (result > INT_MAX / 10 || (result == INT_MAX / 10 && s[i] - '0' > INT_MAX % 10)) {
             return (sign == 1) ? INT_MAX : INT_MIN;
         }
@@ -347,22 +319,16 @@ int main() {
 
     return 0;
 }
-
 ```
 
 ### INTEGER TO ROMAN TO INTEGER
-
 ```C
-
 char* intToRoman(int num) {
 
     char* symbol[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
     int value[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-
-
     char* result = (char*)malloc(20 * sizeof(char));
     result[0] = '\0'; // Initialize the result string
-
 
     for (int i = 0; num != 0; ++i) {
 
@@ -371,7 +337,6 @@ char* intToRoman(int num) {
             num -= value[i];
         }
     }
-
     return result;
 }
 
@@ -388,14 +353,12 @@ int romanToInt(char *s) {
     int result = 0;
     int prevValue = 0;
 
-
     for (int i = 0; s[i] != '\0'; ++i) {
         int value = values[s[i] - 'A'];
  
         result += (prevValue < value) ? -prevValue : prevValue;
         prevValue = value;
     }
-
 
     result += prevValue;
 
@@ -405,3 +368,562 @@ int romanToInt(char *s) {
 ```
 
 
+### LARGEST COMMON PREFIX
+
+```C
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* longestCommonPrefix(char **strs, int strsSize) {
+    if (strsSize == 0) return ""; 
+
+    int len = strlen(strs[0]);
+    char* prefix = (char*)malloc((len + 1) * sizeof(char));
+    if (prefix == NULL) {
+        return NULL;
+    }
+    strncpy(prefix, strs[0], len); 
+
+    for (int i = 0; i < len; i++) {
+        char c = strs[0][i]; 
+        for (int j = 1; j < strsSize; j++) {
+
+            if (i == strlen(strs[j]) || strs[j][i] != c) {
+                prefix[i] = '\0';
+                return prefix;
+            }
+        }
+    }
+
+    return prefix; // 
+}
+
+int main() {
+    char *strs1[] = {"flower", "flow", "flight"};
+    char *strs2[] = {"dog", "racecar", "car"};
+
+    printf("Example 1: %s\n", longestCommonPrefix(strs1, 3)); // Output: "fl"
+    printf("Example 2: %s\n", longestCommonPrefix(strs2, 3)); // Output: ""
+
+    return 0;
+}
+
+```
+
+### LETTER IN COM IN PHONE NO.
+
+```C
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char map[10][5] = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+
+void search(int cidx, char** res, char* restmp, int* returnSize, int len, char* digits) {
+    if (cidx == len) {
+        restmp[cidx] = '\0';
+        char* tmp = (char*) malloc((len+1) * sizeof(char));
+        strncpy(tmp, restmp, len+1);
+        res[(*returnSize)++] = tmp;
+    } else {
+        char* substring = map[digits[cidx] - '0'];
+        for (int i = 0; i < strlen(substring); i++) {
+            restmp[cidx] = substring[i];
+            search(cidx+1, res, restmp, returnSize, len, digits);
+        }
+    }
+}
+
+char** letterCombinations(char* digits, int* returnSize) {
+    int len = strlen(digits);
+    *returnSize = 0;
+    if (len == 0) return NULL;
+    int size = 1;
+    for (int i = 0; i < len; i++) {
+        size *= strlen(map[digits[i] - '0']);
+    }
+    char** res = (char**) malloc(size * sizeof(char*));
+    char* restmp = (char*) malloc((len+1) * sizeof(char));
+    search(0, res, restmp, returnSize, len, digits);
+	free(restmp);
+    return res;
+}
+
+int main() {
+    char digits[] = "23";
+    int returnSize;
+    char** result = letterCombinations(digits, &returnSize);
+    
+    // Print the result
+    printf("[");
+    for (int i = 0; i < returnSize; i++) {
+        printf("%s%s", result[i], (i == returnSize - 1) ? "" : ",");
+        free(result[i]); 
+    }
+    printf("]\n");
+    
+    free(result); // [ad,ae,af,bd,be,bf,cd,ce,cf]
+
+    return 0;
+}
+
+```
+
+### CHECK VALID PARENTHESIS
+
+```C
+bool isValid(char* s) {
+    char stack[10000];
+    int top = -1; // Initialize stack top
+
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] == '(' || s[i] == '[' || s[i] == '{') {
+            stack[++top] = s[i]; // Push opening symbols onto stack
+        } else {
+            // Check if stack is empty or closing symbol does not match top of stack
+            if (top == -1 || (s[i] == ')' && stack[top] != '(') || (s[i] == ']' && stack[top] != '[') || (s[i] == '}' && stack[top] != '{')) {
+                return false;
+            }
+            top--; // Pop matching opening symbol from stack
+        }
+    }
+
+    // If stack is empty, all symbols were matched
+    return top == -1;
+}
+
+char s1[] = "()"; // Output: true
+char s2[] = "()[]{}"; // Output: true
+char s3[] = "(]"; // Output: FALSE
+
+// example call 
+printf("Example 1: %s\n", isValid(s1) ? "true" : "false"); 
+
+
+```
+
+### FIND INDEX OF THE FIRST OCCURENCE STRING
+
+```C
+#include <stdio.h>
+#include <string.h>
+
+int strStr(char *haystack, char *needle) {
+
+    if (needle[0] == '\0')
+        return 0;
+
+    char *result = strstr(haystack, needle);
+
+    if (result == NULL)
+        return -1;
+
+    return result - haystack;
+}
+
+int main() {
+    char haystack1[] = "sadbutsad";
+    char needle1[] = "sad";
+
+    char haystack2[] = "letleetcode";
+    char needle2[] = "leet";
+
+    int index1 = strStr(haystack1, needle1);
+    int index2 = strStr(haystack2, needle2);
+
+    printf("Example 1: %d\n", index1); // Output: 0
+    printf("Example 2: %d\n", index2); // Output: -1
+
+    return 0;
+}
+
+```
+
+### DEFANGING AN IP ADDRESS
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *defangIPaddr(char *address) {
+    // Calculate the length of the defanged IP address
+    int len = strlen(address);
+    int defangedLen = len + 6; // Each '.' is replaced by "[.]"
+
+    // Allocate memory for the defanged IP address
+    char *defangedAddress = (char *)malloc(defangedLen + 1); // Plus 1 for the null terminator
+
+    // Iterate through the characters of the original IP address
+    int j = 0;
+    for (int i = 0; i < len; i++) {
+        if (address[i] == '.') {
+            // If the current character is a '.', replace it with "[.]" in the defanged address
+            defangedAddress[j++] = '[';
+            defangedAddress[j++] = '.';
+            defangedAddress[j++] = ']';
+        } else {
+            // Otherwise, copy the character as is
+            defangedAddress[j++] = address[i];
+        }
+    }
+
+    defangedAddress[j] = '\0';
+
+    return defangedAddress;
+}
+
+int main() {
+    char *address1 = "1.1.1.1";
+    char *address2 = "255.100.50.0";
+
+    char *defanged1 = defangIPaddr(address1);
+    char *defanged2 = defangIPaddr(address2);
+
+    printf("Example 1: %s\n", defanged1); // Output: "1[.]1[.]1[.]1"
+    printf("Example 2: %s\n", defanged2); // Output: "255[.]100[.]50[.]0"
+
+
+    return 0;
+}
+
+```
+
+### FINAL VALUE OF VARIABLE AFTER PERFORMING OPERATIONS
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int finalValueAfterOperations(char **operations, int operationsSize) {
+    int X = 0; // Initial value of X
+
+    for (int i = 0; i < operationsSize; i++) {
+        if (strcmp(operations[i], "++X") == 0 || strcmp(operations[i], "X++") == 0) {
+            X++;
+        } else if (strcmp(operations[i], "--X") == 0 || strcmp(operations[i], "X--") == 0) {
+            X--;
+        }
+    }
+
+    return X;
+}
+
+int main() {
+    char *operations1[] = {"--X", "X++", "X++"};
+    int size1 = sizeof(operations1) / sizeof(operations1[0]);
+    printf("Example 1: %d\n", finalValueAfterOperations(operations1, size1)); // Output: 1
+
+    return 0;
+}
+
+```
+
+
+### JEWELS AND STONE
+
+```c
+
+#include <stdio.h>
+#include <string.h>
+
+int numJewelsInStones(char *jewels, char *stones) {
+    int jewelsCount[128] = {0}; 
+    
+    // Count the occurrences of each stone type
+    for (int i = 0; i < strlen(stones); i++) {
+        jewelsCount[stones[i]]++;
+    }
+    
+    int totalJewels = 0;
+    
+    // Count the occurrences of each stone type that is also present in the jewels
+    for (int i = 0; i < strlen(jewels); i++) {
+        totalJewels += jewelsCount[jewels[i]];
+    }
+    
+    return totalJewels;
+}
+
+int main() {
+    char *jewels1 = "aA";
+    char *stones1 = "aAAbbbb";
+    printf("Example 1: %d\n", numJewelsInStones(jewels1, stones1)); // Output: 3
+
+    char *jewels2 = "z";
+    char *stones2 = "ZZ";
+    printf("Example 2: %d\n", numJewelsInStones(jewels2, stones2)); // Output: 0
+
+    return 0;
+}
+
+```
+
+
+### FIND WORDS CONTAINER CHARACTER
+
+```C
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int* findOccurrences(char** words, int wordsSize, char x, int* returnSize) {
+    int* result = (int*)malloc(wordsSize * sizeof(int));
+    *returnSize = 0; /
+
+    for (int i = 0; i < wordsSize; i++) {
+        for (int j = 0; j < strlen(words[i]); j++) {
+            if (words[i][j] == x) {
+                result[(*returnSize)++] = i;
+                break;
+            }
+        }
+    }
+
+    if (*returnSize == 0) {
+        free(result);
+        return NULL;
+    }
+    result = (int*)realloc(result, (*returnSize) * sizeof(int));
+    return result;
+}
+
+int main() {
+    char* words1[] = {"leet", "man", "code"};
+    char x1 = 'e';
+    int returnSize1;
+    
+    int wordsLength = sizeof(words1) / sizeof(words1[0]);
+
+    
+    int* result1 = findOccurrences(words1, wordsLength, x1, &returnSize1);
+    printf("[");
+    for (int i = 0; i < returnSize1; i++) {
+        printf("%d%s", result1[i], (i == returnSize1 - 1) ? "" : ",");
+    }
+    printf("]\n");
+    free(result1); // [0, 2]
+    
+    return 0;
+    
+}
+
+```
+
+### GOAL PARSER 
+
+```C
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *interpret(char *command) {
+    int len = strlen(command);
+    char *result = (char *)malloc((len + 1) * sizeof(char));
+    int index = 0;
+
+    for (int i = 0; i < len; i++) {
+        if (command[i] == 'G') {
+            result[index++] = 'G';
+        } else if (command[i] == '(' && command[i + 1] == ')') {
+            result[index++] = 'o';
+            i++; // Skip ')' as well
+        } else if (command[i] == '(' && command[i + 1] == 'a' && command[i + 2] == 'l' && command[i + 3] == ')') {
+            result[index++] = 'a';
+            result[index++] = 'l';
+            i += 3; // Skip 'a', 'l', and ')'
+        }
+    }
+
+    result[index] = '\0'; 
+
+    return result;
+}
+
+int main() {
+    char *command1 = "G()(al)";
+    printf("Example 1: %s\n", interpret(command1)); // Output: "Goal"
+
+    char *command2 = "G()()()()(al)";
+    printf("Example 2: %s\n", interpret(command2)); // Output: "Gooooal"
+
+    char *command3 = "(al)G(al)()()G";
+    printf("Example 3: %s\n", interpret(command3)); // Output: "alGalooG"
+
+    return 0;
+}
+
+
+```
+
+### LARGEST WORD FOUND IN SENTENCE
+
+```C
+
+#include <stdio.h>
+#include <string.h>
+
+int countWords(char *sentence) {
+    int count = 0;
+    int isWord = 0;
+
+    for (int i = 0; i < strlen(sentence); i++) {
+
+        if (sentence[i] != ' ' && (i == 0 || sentence[i - 1] == ' ')) {
+            isWord = 1; 
+            count++; 
+        } else if (sentence[i] == ' ') {
+            isWord = 0; 
+        }
+    }
+
+    return count;
+}
+
+int maxWords(char **sentences, int sentencesSize) {
+    int maxCount = 0;
+
+
+    for (int i = 0; i < sentencesSize; i++) {
+        int count = countWords(sentences[i]);  
+        if (count > maxCount) {
+            maxCount = count; 
+        }
+    }
+
+    return maxCount;
+}
+
+int main() {
+    char *sentences1[] = {"alice and bob love leetcode", "i think so too", "this is great thanks very much"};
+    printf("Example 1: %d\n", maxWords(sentences1, 3)); // Output: 6
+
+    char *sentences2[] = {"please wait", "continue to fight", "continue to win"};
+    printf("Example 2: %d\n", maxWords(sentences2, 3)); // Output: 3
+
+    return 0;
+}
+
+```
+
+### SPLIT STRING IN BALANCED STRING
+
+```c
+
+#include <stdio.h>
+
+int balancedStringSplit(char *s) {
+    int balance = 0; // Initialize balance count
+    int count = 0; 
+
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] == 'L') {
+            balance++; 
+        } else {
+            balance--; 
+        }
+
+        if (balance == 0) {
+            count++; 
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    char s1[] = "RLRRLLRLRL";
+    printf("Example 1: %d\n", balancedStringSplit(s1)); // Output: 4
+
+    char s2[] = "RLRRRLLRLL";
+    printf("Example 2: %d\n", balancedStringSplit(s2)); // Output: 2
+
+    char s3[] = "LLLLRRRR";
+    printf("Example 3: %d\n", balancedStringSplit(s3)); // Output: 1
+
+    return 0;
+}
+```
+
+
+### CHECK IF TWO STRING ARRAYS ARE EQUIVALENT
+
+```c
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+bool arrayStringsAreEqual(char **word1, int word1Size, char **word2, int word2Size) {
+    char str1[1000] = ""; 
+    char str2[1000] = "";
+
+    for (int i = 0; i < word1Size; i++) {
+        strcat(str1, word1[i]);
+    }
+    for (int i = 0; i < word2Size; i++) {
+        strcat(str2, word2[i]);
+    }
+    return strcmp(str1, str2) == 0;
+}
+
+int main() {
+    // Test cases
+    char *word1_1[] = {"ab", "c"};
+    char *word2_1[] = {"a", "bc"};
+    printf("Example 1: %s\n", arrayStringsAreEqual(word1_1, 2, word2_1, 2) ? "true" : "false"); // Output: true
+
+    char *word1_2[] = {"a", "cb"};
+    char *word2_2[] = {"ab", "c"};
+    printf("Example 2: %s\n", arrayStringsAreEqual(word1_2, 2, word2_2, 2) ? "true" : "false"); // Output: false
+
+    return 0;
+}
+```
+
+
+### Count Items Matching a Rule
+
+```c
+
+#include <stdio.h>
+#include <string.h>
+
+int countMatches(char ***items, int itemsSize, int *itemsColSize, char *ruleKey, char *ruleValue) {
+    int count = 0;
+
+    for (int i = 0; i < itemsSize; i++) {
+        if (strcmp(ruleKey, "type") == 0 && strcmp(items[i][0], ruleValue) == 0) {
+            count++;
+        } else if (strcmp(ruleKey, "color") == 0 && strcmp(items[i][1], ruleValue) == 0) {
+            count++;
+        } else if (strcmp(ruleKey, "name") == 0 && strcmp(items[i][2], ruleValue) == 0) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    // Test cases
+    char *items_1[][3] = {{"phone","blue","pixel"}, {"computer","silver","lenovo"}, {"phone","gold","iphone"}};
+    char ruleKey_1[] = "color";
+    char ruleValue_1[] = "silver";
+    printf("Example 1: %d\n", countMatches(items_1, 3, (int[]){3, 3, 3}, ruleKey_1, ruleValue_1)); // Output: 1
+
+    char *items_2[][3] = {{"phone","blue","pixel"}, {"computer","silver","phone"}, {"phone","gold","iphone"}};
+    char ruleKey_2[] = "type";
+    char ruleValue_2[] = "phone";
+    printf("Example 2: %d\n", countMatches(items_2, 3, (int[]){3, 3, 3}, ruleKey_2, ruleValue_2)); // Output: 2
+
+    return 0;
+}
+
+```
