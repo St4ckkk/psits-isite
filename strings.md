@@ -1333,37 +1333,30 @@ int main() {
 #include <stdlib.h>
 #include <string.h>
 
-// Structure to hold each word along with its original position
 struct Word {
     char word[20];
     int position;
 };
 
-// Function to compare two words based on their original positions
 int compare(const void *a, const void *b) {
     struct Word *wordA = (struct Word *)a;
     struct Word *wordB = (struct Word *)b;
     return wordA->position - wordB->position;
 }
 
-// Function to reconstruct the original sentence
 char* reconstruct_sentence(char* s) {
-    // Split the input string into individual words
     char* token = strtok(s, " ");
     struct Word words[9];
     int count = 0;
 
     while (token != NULL) {
-        // Extract the word and its position
         sscanf(token, "%[^0-9]%d", words[count].word, &words[count].position);
         count++;
         token = strtok(NULL, " ");
     }
 
-    // Sort the words based on their original positions
     qsort(words, count, sizeof(struct Word), compare);
 
-    // Concatenate the sorted words to form the original sentence
     char* original_sentence = malloc(100 * sizeof(char));
     strcpy(original_sentence, words[0].word);
     for (int i = 1; i < count; i++) {
@@ -1381,6 +1374,35 @@ int main() {
     printf("%s\n", reconstruct_sentence(s1)); // Output: "This is a sentence"
     printf("%s\n", reconstruct_sentence(s2)); // Output: "Me Myself and I"
 
+    return 0;
+}
+
+```
+
+### CHECK IF A STRING IS ACRONYM OF THE WORD
+
+```C
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+bool isAcronym(char ** words, int wordsSize, char * s){
+    for(int i = 0 ; i < wordsSize ; i++)
+    {
+        if(!*s)
+            return false;
+        if(words[i][0] == *s)
+            *s++;
+    }
+    return !*s;
+}
+
+int main() {
+    char *words1[] = {"alice", "bob", "charlie"};
+    char s1[] = "abc";
+    int arrayLength = sizeof(words1) / sizeof(words1[0]); 
+    printf("Example 1: %s\n", isAcronym(words1, arrayLength, s1) ? "true" : "false"); // Output: true
     return 0;
 }
 
