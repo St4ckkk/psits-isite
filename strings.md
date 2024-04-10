@@ -927,3 +927,104 @@ int main() {
 }
 
 ```
+
+
+### TRUNCATE OR BASAWASAN BASE SA GIVEN INDEX
+
+```C
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *truncateSentence(char *s, int k) {
+    int len = strlen(s);
+    int wordCount = 0;
+
+    // Count the number of words in the sentence
+    for (int i = 0; i < len; i++) {
+        if (s[i] == ' ')
+            wordCount++;
+    }
+    wordCount++; // Count the last word
+
+    // If the word count is less than or equal to k, return the original sentence
+    if (wordCount <= k)
+        return s;
+
+    // Extract the first k words
+    char *result = (char *)malloc((len + 1) * sizeof(char));
+    if (result == NULL) {
+        // Memory allocation failed
+        return NULL;
+    }
+    int wordIndex = 0;
+    int resultIndex = 0;
+    for (int i = 0; i < len && wordIndex < k; i++) {
+        if (s[i] == ' ') {
+            result[resultIndex++] = ' ';
+            wordIndex++;
+        } else {
+            result[resultIndex++] = s[i];
+        }
+    }
+    result[resultIndex] = '\0'; // Null-terminate the result string
+
+    return result;
+}
+
+int main() {
+    // Test cases
+    char s1[] = "Hello how are you Contestant";
+    int k1 = 4;
+    printf("Example 1: %s\n", truncateSentence(s1, k1)); // Output: "Hello how are you"
+
+    char s3[] = "chopper is not a tanuki";
+    int k3 = 5;
+    printf("Example 3: %s\n", truncateSentence(s3, k3)); // Output: "chopper is not a tanuki"
+
+    return 0;
+}
+
+```
+
+
+### SHUFFLE STRING BASED ON INDEX
+
+```C
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *restoreString(char *s, int *indices, int indicesSize) {
+    int len = strlen(s);
+    char *result = (char *)malloc((len + 1) * sizeof(char)); 
+    if (result == NULL) {
+        return NULL;
+    }
+
+    for (int i = 0; i < len; i++) {
+        result[indices[i]] = s[i];
+    }
+    result[len] = '\0'; 
+
+    return result;
+}
+
+int main() {
+    // Test cases
+    char s1[] = "codeleet";
+    int indices1[] = {4, 5, 6, 7, 0, 2, 1, 3};
+    int indicesSize1 = sizeof(indices1) / sizeof(indices1[0]);
+    printf("Example 1: %s\n", restoreString(s1, indices1, indicesSize1)); // Output: "leetcode"
+
+    char s2[] = "abc";
+    int indices2[] = {1, 0, 2};
+    int indicesSize2 = sizeof(indices2) / sizeof(indices2[0]);
+    printf("Example 2: %s\n", restoreString(s2, indices2, indicesSize2)); // Output: "bac"
+
+    return 0;
+}
+
+```
