@@ -239,7 +239,7 @@ int main() {
 ### Count Decimal
 ```c
 
-![alt text](image.png)
+Decimal representation: 0.(6)
 
 #include <stdio.h>
 #include <stdlib.h>
