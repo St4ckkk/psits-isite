@@ -1286,8 +1286,101 @@ char* reverseWords(char* s) {
 int main() {
     char param_1[] = "Hello World!";
     char* ret = reverseWords(param_1);
-    printf("%s\n", ret);
+    printf("%s\n", ret); // olleH !dlroW
     free(ret); 
+    return 0;
+}
+
+```
+
+### Count the Number of Consistent Strings
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int countConsistentStrings(char * allowed, char ** words, int size){
+    int s = 0 , ans = 0;
+    for(int i = 0 ; allowed[i] ; i++){
+        s |= 1<<(allowed[i]-'a');
+    }
+    for(int i = 0 ; i < size ; i++){
+        int c = 0;
+        for(int j = 0 ; words[i][j] ; j++){
+            c |= 1<<(words[i][j]-'a');
+        }
+        if(s == (c|s)) ans++;
+    }
+    return ans;
+}
+
+int main() {
+    char allowed[] = "abc";
+    char *words[] = {"a","b","c","ab","ac","bc","abc"};
+    int size = sizeof(words) / sizeof(words[0]);
+    int consistentCount = countConsistentStrings(allowed, words, size);
+    printf("Number of consistent strings: %d\n", consistentCount); // Number of consistent strings: 7
+    return 0;
+}
+```
+
+### SORTING THE SENTENCE
+
+```c
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Structure to hold each word along with its original position
+struct Word {
+    char word[20];
+    int position;
+};
+
+// Function to compare two words based on their original positions
+int compare(const void *a, const void *b) {
+    struct Word *wordA = (struct Word *)a;
+    struct Word *wordB = (struct Word *)b;
+    return wordA->position - wordB->position;
+}
+
+// Function to reconstruct the original sentence
+char* reconstruct_sentence(char* s) {
+    // Split the input string into individual words
+    char* token = strtok(s, " ");
+    struct Word words[9];
+    int count = 0;
+
+    while (token != NULL) {
+        // Extract the word and its position
+        sscanf(token, "%[^0-9]%d", words[count].word, &words[count].position);
+        count++;
+        token = strtok(NULL, " ");
+    }
+
+    // Sort the words based on their original positions
+    qsort(words, count, sizeof(struct Word), compare);
+
+    // Concatenate the sorted words to form the original sentence
+    char* original_sentence = malloc(100 * sizeof(char));
+    strcpy(original_sentence, words[0].word);
+    for (int i = 1; i < count; i++) {
+        strcat(original_sentence, " ");
+        strcat(original_sentence, words[i].word);
+    }
+
+    return original_sentence;
+}
+
+int main() {
+    char s1[] = "is2 sentence4 This1 a3";
+    char s2[] = "Myself2 Me1 I4 and3";
+
+    printf("%s\n", reconstruct_sentence(s1)); // Output: "This is a sentence"
+    printf("%s\n", reconstruct_sentence(s2)); // Output: "Me Myself and I"
+
     return 0;
 }
 
