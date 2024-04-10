@@ -1,5 +1,141 @@
 # STRINGS
 
+
+### FIRST LETTER TO APPEAR TWICE
+
+```c
+
+#include <stdio.h>
+#include <string.h>
+
+char firstRepeatedChar(char* s) {
+    int indices[26] = {0}; 
+    char result = '\0'; 
+
+    int smallestIndexDiff = strlen(s); 
+
+    for (int i = 0; s[i] != '\0'; i++) {
+        int index = s[i] - 'a';
+
+        if (indices[index] != 0) { 
+            int indexDiff = i - indices[index] + 1;
+
+            if (indexDiff < smallestIndexDiff) {
+                smallestIndexDiff = indexDiff;
+                result = s[i];
+            }
+        } else { 
+            indices[index] = i + 1; 
+        }
+    }
+
+    return result;
+}
+
+int main() {
+    char s1[] = "abccbaacz";
+    printf("Output: %c\n", firstRepeatedChar(s1)); // Output: c
+
+    char s2[] = "abcdd";
+    printf("Output: %c\n", firstRepeatedChar(s2)); // Output: d
+
+    return 0;
+}
+
+```
+
+### REMOVE TRAILING ZER0
+
+```c
+
+#include <stdio.h>
+#include <string.h>
+
+char* removeTrailingZeros(char* num) {
+    int len = strlen(num);
+    while (len > 0 && num[len - 1] == '0') {
+        num[len - 1] = '\0';
+        len--;
+    }
+    return num;
+}
+
+int main() {
+    char num1[] = "51230100";
+    printf("Output: %s\n", removeTrailingZeros(num1)); // Output: "512301"
+
+    char num2[] = "123";
+    printf("Output: %s\n", removeTrailingZeros(num2)); // Output: "123"
+
+    return 0;
+}
+
+```
+
+### ADD TRAILING ZERO
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+char* addTrailingZeros(char* num, int zeros) {
+    int len = strlen(num);
+    int newLen = len + zeros;
+    for (int i = len; i < newLen; i++) {
+        num[i] = '0';
+    }
+    num[newLen] = '\0';
+    return num;
+}
+
+int main() {
+    char num1[] = "512301";
+    int zeros1 = 2;
+    printf("Output: %s\n", addTrailingZeros(num1, zeros1)); // Output: "51230100"
+
+    char num2[] = "123";
+    int zeros2 = 3;
+    printf("Output: %s\n", addTrailingZeros(num2, zeros2)); // Output: "123000"
+
+    return 0;
+}
+```
+
+### PREFIX COUNTER IN A STRING WITH GIVEN TEXT
+
+```c
+
+#include <stdio.h>
+#include <string.h>
+
+int countPrefix(char* words[], int size, char* pref) {
+    int count = 0;
+    for (int i = 0; i < size; i++) {
+        if (strncmp(words[i], pref, strlen(pref)) == 0) {
+            count++;
+        }
+    }
+    return count;
+}
+
+int main() {
+    char* words1[] = {"pay", "attention", "practice", "attend"};
+    int size1 = sizeof(words1) / sizeof(words1[0]);
+    char* pref1 = "at";
+    printf("Output: %d\n", countPrefix(words1, size1, pref1)); // Output: 2
+
+    char* words2[] = {"leetcode", "win", "loops", "success"};
+    int size2 = sizeof(words2) / sizeof(words2[0]);
+    char* pref2 = "code";
+    printf("Output: %d\n", countPrefix(words2, size2, pref2)); // Output: 0
+
+    return 0;
+}
+
+```
+
+
+
 ### REPLACE CHARACTER
 ```c
 i: Reydel
@@ -71,13 +207,13 @@ void replaceLast(char *str, char newChar) {
 ### REVERSE STRING
 
 ```C
-#include <stdio.h>
-#include <string.h>
+
 int main() {
     char str[101];
+    printf("Enter a string: ");
     scanf("%s", str);
+
     int len = strlen(str);
-    // Reverse the string
     for (int i = len - 1; i >= 0; i--) {
         printf("%c", str[i]);
     }
@@ -85,6 +221,42 @@ int main() {
 }
 
 ```
+
+### PERCENTAGE OF LETTERS IN A STRING
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int letterPercentage(char* s, char letter) {
+    int count = 0;
+    int totalLength = strlen(s);
+
+    for (int i = 0; i < totalLength; i++) {
+        if (s[i] == letter) {
+            count++;
+        }
+    }
+
+    if (totalLength == 0) {
+        return 0; // Edge case when the string is empty
+    }
+
+    return (count * 100) / totalLength; // Calculate the percentage and round down
+}
+
+int main() {
+    char s1[] = "reyyydyl", letter1 = 'y';
+    printf("Output: %d\n", letterPercentage(s1, letter1)); // Output: 33
+
+    char s2[] = "jjjj", letter2 = 'k';
+    printf("Output: %d\n", letterPercentage(s2, letter2)); // Output: 0
+
+    return 0;
+}
+
+```
+
 ### CHECK OF BOTH STRINGS ARE ANAGRAM
 ```C
 #include <stdio.h>
@@ -1614,3 +1786,443 @@ int main() {
 }
 
 ```
+
+
+### REVERSE PREFIX IN STRING
+
+```c
+
+#include <stdio.h>
+#include <string.h>
+
+char *reversePrefix(char *word, char ch) {
+    int len = strlen(word);
+    for (int i = 0; i < len; i++) {
+        if (word[i] == ch) {
+            for (int j = 0; j < (i + 1) / 2; j++) {
+                char temp = word[j];
+                word[j] = word[i - j];
+                word[i - j] = temp;
+            }
+            break;
+        }
+    }
+    return word;
+}
+
+int main() {
+    char word1[] = "abcdefd";
+    char ch1 = 'd';
+    printf("Example 1: %s\n", reversePrefix(word1, ch1)); // Output: "dcbaefd"
+
+    char word2[] = "xyxzxe";
+    char ch2 = 'z';
+    printf("Example 2: %s\n", reversePrefix(word2, ch2)); // Output: "zxyxxe"
+
+    char word3[] = "abcd";
+    char ch3 = 'z';
+    printf("Example 3: %s\n", reversePrefix(word3, ch3)); // Output: "abcd"
+
+    return 0;
+}
+
+
+```
+
+### RINGS AND RODS
+
+```c
+
+#include <stdio.h>
+#include <string.h>
+
+int countPoints(char * rings){
+    int i = 0, ans = 0, l = strlen(rings);
+    int a[10] = {0};
+    
+    while(i < l){
+        switch(rings[i]){
+                case 'R':
+                    a[rings[i + 1] - '0'] |= 0b1;
+                    break;
+                case 'G':
+                    a[rings[i + 1] - '0'] |= 0b10;
+                    break;
+                case 'B':
+                    a[rings[i + 1] - '0'] |= 0b100;
+                    break;
+        }        
+        i += 2;
+    }
+    
+    for(i = 0; i < 10; i++){
+        if(a[i] == 7)
+            ans++;
+    }
+    
+    return ans;
+}
+
+int main() {
+    char rings1[] = "B0R0G0R9R0B0G0";
+    printf("Output: %d\n", countPoints(rings1)); // Output: 1
+
+    char rings2[] = "G4";
+    printf("Output: %d\n", countPoints(rings2)); // Output: 0
+
+    char rings3[] = "B0B6G0R6R0R6G9";
+    printf("Output: %d\n", countPoints(rings3)); // Output: 1
+
+    return 0;
+}
+
+```
+
+### COUNT SUBSTRINGS
+
+```c
+
+#include <stdio.h>
+#include <string.h>
+
+int countSubstrings(char **patterns, int patternsSize, char *word) {
+    int count = 0;
+    int wordLen = strlen(word);
+
+    for (int i = 0; i < patternsSize; i++) {
+        char *pattern = patterns[i];
+        int patternLen = strlen(pattern);
+        
+        for (int j = 0; j <= wordLen - patternLen; j++) {
+            if (strncmp(word + j, pattern, patternLen) == 0) {
+                count++;
+                break; // Move to the next pattern
+            }
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    char *patterns1[] = {"a", "abc", "bc", "d"};
+    int patternsSize1 = sizeof(patterns1) / sizeof(patterns1[0]);
+    char word1[] = "abc";
+    printf("Output: %d\n", countSubstrings(patterns1, patternsSize1, word1)); // Output: 3
+
+    char *patterns2[] = {"a", "b", "c"};
+    int patternsSize2 = sizeof(patterns2) / sizeof(patterns2[0]);
+    char word2[] = "aaaaabbbbb";
+    printf("Output: %d\n", countSubstrings(patterns2, patternsSize2, word2)); // Output: 2
+
+    char *patterns3[] = {"a", "a", "a"};
+    int patternsSize3 = sizeof(patterns3) / sizeof(patterns3[0]);
+    char word3[] = "ab";
+    printf("Output: %d\n", countSubstrings(patterns3, patternsSize3, word3)); // Output: 3
+
+    return 0;
+}
+
+```
+
+### INCREASE DECREASING STRING
+
+```c
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
+char * sortString(char * s){
+    char *result = calloc(strlen(s) + 1, sizeof(char));
+    int dp[26] = {0};    
+    for(int i = 0;i<strlen(s);i++){
+        dp[s[i] - 'a'] += 1;
+    }    
+    int r_count = 0;
+    while(r_count < strlen(s)){         
+        for(int i = 0;i<26;i++){
+            if (dp[i] > 0){
+                result[r_count++] = 'a' + i;                
+            }
+            dp[i]--;
+        }
+        for(int i = 25;i>=0;i--){
+            if (dp[i] > 0){
+                result[r_count++] = 'a' + i;                
+            }
+            dp[i]--;
+        }
+    }
+    result[strlen(s)] = '\0';
+    return result;
+}
+
+int main() {
+    char s1[] = "aaaabbbbcccc";
+    printf("Output: %s\n", sortString(s1)); // Output: "abccbaabccba"
+
+    char s2[] = "rat";
+    printf("Output: %s\n", sortString(s2)); // Output: "art"
+
+    return 0;
+}
+
+```
+
+### Remove Palindromic Subsequences
+
+```c
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+bool isPalindrome(char* s, int start, int end) {
+    while (start < end) {
+        if (s[start] != s[end]) {
+            return false;
+        }
+        start++;
+        end--;
+    }
+    return true;
+}
+
+int removePalindromeSub(char* s) {
+    int n = strlen(s);
+    if (n == 0) {
+        return 0; // Empty string requires 0 steps
+    }
+    if (isPalindrome(s, 0, n - 1)) {
+        return 1; // If s is already a palindrome, remove it in 1 step
+    }
+    return 2; // If s is not a palindrome, remove each palindrome subsequence in 1 step
+}
+
+int main() {
+    char s1[] = "ababa";
+    printf("Output: %d\n", removePalindromeSub(s1)); // Output: 1
+
+    char s2[] = "abb";
+    printf("Output: %d\n", removePalindromeSub(s2)); // Output: 2
+
+    char s3[] = "baabb";
+    printf("Output: %d\n", removePalindromeSub(s3)); // Output: 2
+
+    return 0;
+}
+
+```
+
+### Check if Word Equals Summation of Two Words
+```c
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+bool isPalindrome(char* s, int start, int end) {
+    while (start < end) {
+        if (s[start] != s[end]) {
+            return false;
+        }
+        start++;
+        end--;
+    }
+    return true;
+}
+
+int removePalindromeSub(char* s) {
+    int n = strlen(s);
+    if (n == 0) {
+        return 0; // Empty string requires 0 steps
+    }
+    if (isPalindrome(s, 0, n - 1)) {
+        return 1; // If s is already a palindrome, remove it in 1 step
+    }
+    return 2; // If s is not a palindrome, remove each palindrome subsequence in 1 step
+}
+
+int main() {
+    char s1[] = "ababa";
+    printf("Output: %d\n", removePalindromeSub(s1)); // Output: 1
+
+    char s2[] = "abb";
+    printf("Output: %d\n", removePalindromeSub(s2)); // Output: 2
+
+    char s3[] = "baabb";
+    printf("Output: %d\n", removePalindromeSub(s3)); // Output: 2
+
+    return 0;
+}
+
+```
+
+
+### COUNT VOWELS BASED ON RANGE
+```c
+
+#include <stdio.h>F
+#include <string.h>
+
+int isVowel(char c) {
+    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+}
+
+int countVowelStrings(char** words, int wordsSize, int left, int right) {
+    int count = 0;
+
+    for (int i = left; i <= right; i++) {
+        char* word = words[i];
+        int length = strlen(word);
+
+        if (isVowel(word[0]) && isVowel(word[length - 1])) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    char* words1[] = {"are", "amy", "u"};
+    int left1 = 0, right1 = 2;
+    printf("Output: %d\n", countVowelStrings(words1, 3, left1, right1)); // Output: 2
+
+    char* words2[] = {"hey", "aeo", "mu", "ooo", "artro"};
+    int left2 = 1, right2 = 4;
+    printf("Output: %d\n", countVowelStrings(words2, 5, left2, right2)); // Output: 3
+
+    return 0;
+}
+
+```
+
+### IF ALL A APPEARS FIRST BEFORE B
+
+```c
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+bool checkString(char * s){
+    int len = strlen(s);
+    for(int i = 0; i < len; i++){
+        if(s[i] == 'b'){
+            for(int j = i+1; j < len; j++){
+                if(s[j] == 'a')
+                    return false;
+            }
+        }
+    }
+
+    return true;
+}
+int main() {
+    // Test cases
+    char s1[] = "aaabbb";
+    char s2[] = "abab";
+    char s3[] = "bbb";
+
+    printf("Output for s1: %s\n", checkString(s1) ? "true" : "false"); // Expected output: true
+    printf("Output for s2: %s\n", checkString(s2) ? "true" : "false"); // Expected output: false
+    printf("Output for s3: %s\n", checkString(s3) ? "true" : "false"); // Expected output: true
+
+    return 0;
+}
+    
+```
+
+### COUNT THE NUMBER OF STRINGS THAT STARTS AND ENDS WITH VOWELS
+
+```c
+
+#include <stdio.h>
+#include <string.h>
+
+int countVowelStrings(char **words, int wordsSize) {
+    int count = 0;
+
+    for (int i = 0; i < wordsSize; i++) {
+        char *word = words[i];
+        int length = strlen(word);
+
+        if ((word[0] == 'a' || word[0] == 'e' || word[0] == 'i' || word[0] == 'o' || word[0] == 'u') &&
+            (word[length - 1] == 'a' || word[length - 1] == 'e' || word[length - 1] == 'i' || word[length - 1] == 'o' || word[length - 1] == 'u')) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    char *words1[] = {"spple", "orange", "elephant", "umbrella"};
+    int wordsSize1 = sizeof(words1) / sizeof(words1[0]);
+    printf("Output: %d\n", countVowelStrings(words1, wordsSize1)); // Output: 2
+
+    char *words2[] = {"apple", "orange", "elephant", "umbrella", "aardvark"};
+    int wordsSize2 = sizeof(words2) / sizeof(words2[0]);
+    printf("Output: %d\n", countVowelStrings(words2, wordsSize2)); // Output: 3
+
+    return 0;
+}
+
+```
+
+### SHORTEST DISTANCE TO A CHARACTER
+
+```c
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int* shortestToChar(char *s, char c, int* returnSize) {
+    int len = strlen(s);
+    int* result = (int*)malloc(len * sizeof(int));
+    *returnSize = len;
+
+    int lastSeen = -len;
+
+    for (int i = 0; i < len; i++) {
+        if (s[i] == c) {
+            lastSeen = i;
+        }
+        result[i] = i - lastSeen;
+    }
+
+    lastSeen = 2 * len;
+
+    for (int i = len - 1; i >= 0; i--) {
+        if (s[i] == c) {
+            lastSeen = i;
+        }
+        result[i] = (result[i] < lastSeen - i) ? result[i] : (lastSeen - i);
+    }
+
+    return result;
+}
+
+int main() {
+    char s1[] = "loveleetcode";
+    char c1 = 'e';
+    int returnSize1;
+    int* result1 = shortestToChar(s1, c1, &returnSize1);
+    printf("Output: [");
+    for (int i = 0; i < returnSize1; i++) {
+        printf("%d", result1[i]);
+        if (i < returnSize1 - 1) {
+            printf(",");
+        }
+    }
+
+
+    return 0;
+}
+
+```
+
+
+
