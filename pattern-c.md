@@ -285,18 +285,20 @@ int main() {
 
 ```
 
-PATTERN IN COMPETITIVE PROGRAMMING LIKE NUMBER PATTERN, STRING PATTERN, PASCAL PATTERN, ZIGZAG PATTERN, TINA LOVES A PATTERN, COUNT DECIMAL PATTERN, ETC.
-
-
-
 # STAR PATTERNS
 
 
-### SQAURE STAR PATTERN
+### SQUARE STAR PATTERN
 
 ```c
+    *****
+   *****
+  *****
+ *****
+*****
 
 #include <stdio.h>
+
 
 int main() {
     int i, j, N;
@@ -332,6 +334,12 @@ int main() {
 ### HOLLOW SQUARE STAR PATTERN
 
 ```c
+
+*****
+*   *
+*   *
+*   *
+*****
 
 #include <stdio.h>
 
@@ -382,6 +390,12 @@ int main() {
 
 ```c
 
+*****
+****
+***
+**
+*
+
 #include <stdio.h>
 
 int main() {
@@ -413,6 +427,12 @@ int main() {
 
 ```c
 
+*
+**
+***
+****
+*****
+
 #include <stdio.h>
 
 int main() {
@@ -443,6 +463,12 @@ int main() {
 ### MIRRORED HALF PYRAMID STAR PATTERN
 
 ```c
+
+    *
+   **
+  ***
+ ****
+*****
 
 #include <stdio.h>
 
@@ -477,77 +503,16 @@ int main() {
 
 ```
 
-### MIRRORED HALF PYRAMID STAR PATTERN
-
-```c
-
-#include <stdio.h>
-
-int main() {
-    int i, j, N;
-
-    // Input number of rows
-    printf("Enter number of rows: ");
-    scanf("%d", &N);
-
-    // Iterate through N rows
-    for(i=1; i<=N; i++)
-    {
-        // Print N-i spaces
-        for(j=1; j<=N-i; j++)
-        {
-            printf(" ");
-        }
-
-        // Print i stars
-        for(j=1; j<=i; j++)
-        {
-            printf("*");
-        }
-
-        // Move to the next line
-        printf("\n");
-    }
-
-    return 0;
-}
-
-```
-
-### HALF PYRAMID STAR PATTERN
-
-```c
-
-#include <stdio.h>
-
-int main() {
-    int i, j, N;
-
-    // Input number of rows
-    printf("Enter number of rows: ");
-    scanf("%d", &N);
-
-    // Iterate through N rows
-    for(i=1; i<=N; i++)
-    {
-        // Print i stars
-        for(j=1; j<=i; j++)
-        {
-            printf("*");
-        }
-
-        // Move to the next line
-        printf("\n");
-    }
-
-    return 0;
-}
-
-```
 
 ### PYRAMID STAR PATTERN
 
 ```c
+
+    *
+   ***
+  *****
+ *******
+*********
 
 #include <stdio.h>
 
@@ -586,6 +551,12 @@ int main() {
 
 ```c
 
+*********
+ *******
+  *****
+   ***
+    *
+
 #include <stdio.h>
 
 int main() {
@@ -619,3 +590,1439 @@ int main() {
 
 ```
 
+### Diamond Star Pattern
+
+```c
+
+    *
+   ***
+  *****
+ *******
+*********
+ *******
+  *****
+   ***
+    *
+
+#include <stdio.h>
+
+int main() {
+    int i, j, N;
+
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    // Iterate through N rows
+    for(i=1; i<=N; i++)
+    {
+        // Print N-i spaces
+        for(j=1; j<=N-i; j++)
+        {
+            printf(" ");
+        }
+
+        // Print i stars
+        for(j=1; j<=2*i-1; j++)
+        {
+            printf("*");
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=1; j<=N-i; j++)
+        {
+            printf(" ");
+        }
+        for(j=1; j<=2*i-1; j++)
+        {
+            printf("*");
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+
+### Hollow Diamond Star Pattern
+
+```c
+
+    *
+   * *
+  *   *
+ *     *
+*       *
+ *     *
+  *   *
+   * *
+    *
+
+#include <stdio.h>
+
+int main() {
+    int i, j, N;
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=1; j<=N-i; j++)
+        {
+            printf(" ");
+        }
+        for(j=1; j<=2*i-1; j++)
+        {
+            if(j==1 || j==2*i-1)
+            {
+                printf("*");
+            }
+            else
+            {
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=1; j<=N-i; j++)
+        {
+            printf(" ");
+        }
+        for(j=1; j<=2*i-1; j++)
+        {
+            if(j==1 || j==2*i-1)
+            {
+                printf("*");
+            }
+            else
+            {
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### Right Arrow Star Pattern
+
+
+```c
+
+*****
+  ****
+    ***
+      **
+        *
+      **
+    ***
+  ****
+*****
+
+
+#include <stdio.h>
+
+
+int main()
+{
+    int i, j, n;
+
+    printf("Enter value of n : ");
+    scanf("%d", &n);
+
+    for(i=1; i<n; i++)
+    {
+        for(j=1; j<=(2*i-2); j++)
+        {
+            printf(" ");
+        }
+
+        for(j=i; j<=n; j++)
+        {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
+    for(i=1; i<=n; i++)
+    {
+        for(j=1; j<=(2*n - 2*i); j++)
+        {
+            printf(" ");
+        }
+        for(j=1; j<=i; j++)
+        {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### Left Arrow Star Pattern
+```c
+
+    *****
+   ****
+  ***
+ **
+*
+ **
+  ***
+   ****
+    *****
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, n;
+
+    // Input number of rows from user
+    printf("Enter value of n : ");
+    scanf("%d", &n);
+
+    // Print upper part of the arrow
+    for(i=1; i<n; i++)
+    {
+        // Print trailing (n-rownumber) spaces
+        for(j=1; j<=(n-i); j++)
+        {
+            printf(" ");
+        }
+
+        // Print inverted right triangle
+        for(j=i; j<=n; j++)
+        {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
+    // Print bottom part of the arrow
+    for(i=1; i<=n; i++)
+    {
+        // Print trailing (rownumber-1) spaces
+        for(j=1; j<i; j++)
+        {
+            printf(" ");
+        }
+
+        // Print the right triangle
+        for(j=1; j<=i; j++)
+        {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+### X Star Pattern
+
+```c
+
+*       *
+ *     *
+  *   *
+   * *
+    *
+   * *
+  *   *
+ *     *
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+    int count;
+
+    printf("Enter N: ");
+    scanf("%d", &N);
+
+    count = N * 2 - 1;
+
+    for(i=1; i<=count; i++)
+    {
+        for(j=1; j<=count; j++)
+        {
+            if(j==i || (j==count - i + 1))
+            {
+                printf("*");
+            }
+            else
+            {
+                printf(" ");
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### 8 Star Pattern
+
+```c
+
+ *** 
+*   *
+*   *
+*   *
+ *** 
+*   *
+*   *
+*   *
+ *** 
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, size;
+
+    printf("Enter size: ");
+    scanf("%d", &size);
+
+    for(i=1; i<size*2; i++)
+    {
+        for(j=1; j<=size; j++)
+        {
+            // Condition for corner and center intersection space
+            if((i==1 && (j==1 || j==size)) || 
+               (i==size && (j==1 || j==size)) || 
+               (i==size*2-1 && (j==1 || j==size)))
+            {
+                printf(" ");
+            }
+            else if(i==1 || i==size || i==(size*2)-1 || j==1 || j==size)
+            {
+                printf("*");
+            }
+            else
+            {
+                printf(" ");
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+```
+
+### Heart Star Pattern with name
+
+```c
+ **   **
+**** ****
+**REYDEL*
+ *******
+  *****
+   ***
+    *
+
+#include <stdio.h>
+#include <string.h>
+ 
+int main()
+{
+    int i, j, n;
+    char name[50] = "REYDEL";
+    int len;
+
+ 
+    printf("Enter value of n : ");
+    scanf("%d", &n);
+
+    len = strlen(name);
+
+    // Print upper part of the heart shape
+    for(i=n/2; i<=n; i+=2)
+    {
+        for(j=1; j<n-i; j+=2)
+        {
+            printf(" ");
+        }
+ 
+        for(j=1; j<=i; j++)
+        {
+            printf("*");
+        }
+ 
+        for(j=1; j<=n-i; j++)
+        {
+            printf(" ");
+        }
+ 
+        for(j=1; j<=i; j++)
+        {
+            printf("*");
+        }
+ 
+        printf("\n");
+    }
+ 
+    // Prints lower triangular part of the pattern
+    for(i=n; i>=1; i--)
+    {
+        for(j=i; j<n; j++)
+        {
+            printf(" ");
+        }
+        
+        // Print the name
+        if(i == n) 
+        {
+            for(j=1; j<=(n * 2-len)/2; j++)
+            {
+                printf("*");
+            }   
+
+            printf("%s", name);
+
+            for(j=1; j<(n*2-len)/2; j++)
+            {
+                printf("*");
+            }
+        }
+        else 
+        {
+            for(j=1; j<=(i*2)-1; j++)
+            {
+                printf("*");
+            }
+        }
+ 
+        printf("\n");
+    }
+ 
+    return 0;
+}
+
+```
+
+# NUMBER PATTERNS
+
+### Number Pattern 1
+
+```c
+
+1
+22
+333
+4444
+55555
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, rows;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+
+    for(i=1; i<=rows; i++)
+    {
+        for(j=1; j<=i; j++)
+        {
+            // printf("%d", i); if increment set j
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+
+### BOX NUMBER PATTERN
+
+```c
+
+11111
+11111
+11111
+11111
+11111
+
+#include <stdio.h>
+
+int main()
+{
+    int rows, cols, i, j;
+
+    /* Input rows and columns from user */
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter number of columns: ");
+    scanf("%d", &cols);
+
+    /* Iterate through rows */
+    for(i=1; i<=rows; i++)
+    {
+        /* Iterate through columns */
+        for(j=1; j<=cols; j++)
+        {
+            printf("1");
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### NUMBER PATTERN ALTERNATE ROWS 1,0
+
+```c
+11111
+00000
+11111
+00000
+11111
+
+#include <stdio.h>
+
+int main()
+{
+    int rows, cols, i, j;
+
+    /* Input rows and columns from user */
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter number of columns: ");
+    scanf("%d", &cols);
+
+    for(i=1; i<=rows; i++)
+    {
+        for(j=1; j<=cols; j++)
+        {
+            // Print 1 if current row is odd
+            if(i%2 == 1)
+            {
+                printf("1");
+            }
+            else
+            {
+                printf("0");
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### WRAP NUMBER PATTERN
+
+```c
+11111
+10001
+10001
+10001
+11111
+
+
+#include <stdio.h>
+
+int main()
+{
+    int rows, cols, i, j;
+
+    /* Input rows and columns from user */
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter number of columns: ");
+    scanf("%d", &cols);
+
+    for(i=1; i<=rows; i++)
+    {
+        for(j=1; j<=cols; j++)
+        {
+            /* 
+             * Print 1 if its first or last row
+             * Print 1 if its first or last column
+             */
+            if(i==1 || i==rows || j==1 || j==cols)
+            {
+                printf("1");
+            }
+            else
+            {
+                printf("0");
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### CHESS BOARD NUMBER PATTERN
+
+```c
+
+10101
+01010
+10101
+01010
+10101
+
+
+#include <stdio.h>
+
+int main()
+{
+    int rows, cols, i, j, k;
+
+    /* Input rows and columns from user */
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter number of columns: ");
+    scanf("%d", &cols);
+
+    k = 1;
+
+    for(i=1; i<=rows; i++)
+    {
+        for(j=1; j<=cols; j++)
+        {
+            if(k == 1)
+            {
+                printf("1");
+            }
+            else
+            {
+                printf("0");
+            }
+
+            // If k = 1  then k *= -1 => -1
+            // If k = -1 then k *= -1 =>  1
+            k *= -1;
+        }
+
+        if(cols % 2 == 0)
+        {
+            k *= -1;
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### CENTER 0 NUMBER PATTERN
+
+
+```c
+
+11111
+11111
+11011
+11111
+11111
+
+#include <stdio.h>
+
+int main()
+{
+    int rows, cols, i, j;
+    int centerRow, centerCol;
+
+    /* Input rows and columns from user */
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter number of columns: ");
+    scanf("%d", &cols);
+
+    /* Find center row and column */
+    centerRow = (rows + 1) / 2;
+    centerCol = (cols + 1) / 2;
+
+    for(i=1; i<=rows; i++)
+    {
+        for(j=1; j<=cols; j++)
+        {
+            if(centerCol == j && centerRow == i)
+            {
+                printf("0");
+            }
+            else if(cols%2 == 0 && centerCol+1 == j)
+            {
+                if(centerRow == i || (rows%2 == 0 && centerRow+1 == i))
+                    printf("0");
+                else
+                    printf("1");
+            }
+            else if(rows%2 == 0 && centerRow+1 == i)
+            {
+                if(centerCol == j || (cols%2 == 0 && centerCol+1 == j))
+                    printf("0");
+                else
+                    printf("1");
+            }
+            else
+            {
+                printf("1");
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+
+### NUMBER PATTERN BOX TYPE 
+
+
+```c
+
+555555555
+544444445
+543333345
+543222345
+543212345
+543222345
+543333345
+544444445
+555555555
+
+
+#include <stdio.h>
+
+int main()
+{
+    int N, i, j;
+
+    printf("Enter N: ");
+    scanf("%d", &N);
+
+    // First upper half of the pattern
+    for(i=N; i>=1; i--)
+    {
+        // First inner part of upper half
+        for(j=N; j>i; j--)
+        {
+            printf("%d", j);
+        }
+
+        // Second inner part of upper half
+        for(j=1; j<=(i*2-1); j++)
+        {
+            printf("%d", i);
+        }
+
+        // Third inner part of upper half
+        for(j=i+1; j<=N; j++)
+        {
+            printf("%d", j);
+        }
+
+        printf("\n");
+    }
+
+    // Second lower half of the pattern
+    for(i=1; i<N; i++)
+    {
+        // First inner part of lower half
+        for(j=N; j>i; j--)
+        {
+            printf("%d", j);
+        }
+
+        // Second inner part of lower half
+        for(j=1; j<=(i*2-1); j++)
+        {
+            printf("%d", i+1);
+        }
+
+        // Third inner part of lower half
+        for(j=i+1; j<=N; j++)
+        {
+            printf("%d", j);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### HALF DIAMOND
+
+```c
+
+1
+121
+12321
+1234321
+123454321
+1234321
+12321
+121
+1
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+
+    printf("Enter rows: ");
+    scanf("%d", &N);
+
+    // Print the first upper half
+    for(i=1; i<=N; i++)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%d", j);
+        }
+        for(j=i-1; j>=1; j--)
+        {
+            printf("%d", j);
+        }
+
+        printf("\n");
+    }
+
+    // Print the lower half of the pattern
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%d", j);
+        }
+        for(j=i-1; j>=1; j--)
+        {
+            printf("%d", j);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### HALF DIAMOND WITH STAR END
+
+```c
+*
+*1*
+*121*
+*12321*
+*1234321*
+*123454321*
+*1234321*
+*12321*
+*121*
+*1*
+*
+
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+
+    printf("Enter rows: ");
+    scanf("%d", &N);
+
+    printf("*\n");
+    // Print the first upper half
+    for(i=1; i<=N; i++)
+    {
+        printf("*");
+        for(j=1; j<=i; j++)
+        {
+            printf("%d", j);
+        }
+
+        for(j=i-1; j>=1; j--)
+        {
+            printf("%d", j);
+        }
+        printf("*");
+
+        printf("\n");
+    }
+
+    // Print the lower half of the pattern
+    for(i=N-1; i>=1; i--)
+    {
+        printf("*");
+        for(j=1; j<=i; j++)
+        {
+            printf("%d", j);
+        }
+
+        for(j=i-1; j>=1; j--)
+        {
+            printf("%d", j);
+        }
+        printf("*");
+
+        printf("\n");
+    }
+    printf("*");
+
+    return 0;
+}
+
+```
+
+### X NUMBER PATTERN
+
+```c
+
+1       1
+ 2     2
+  3   3
+   4 4
+    5
+   4 4
+  3   3
+ 2     2
+1       1
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+
+    printf("Enter N: ");
+    scanf("%d", &N);
+
+    // First part of the pattern
+    for(i=1; i<=N; i++)
+    {
+        // Print trailing spaces
+        for(j=1; j<i; j++)
+        {
+            printf(" ");
+        }
+
+        printf("%d", i);
+
+        // Print central spacces
+        for(j=1; j<=((N - i) * 2 - 1); j++)
+        {
+            printf(" ");
+        }
+        // Don't print for last row
+        if(i != N)
+            printf("%d", i);
+        // Moves on to the next row
+        printf("\n");
+    }
+
+    // Second part of the pattern
+    for(i=N-1; i>=1; i--)
+    {
+        // Print trailing spaces
+        for(j=1; j<i; j++)
+        {
+            printf(" ");
+        }
+
+        printf("%d", i);
+
+        // Print central spaces
+        for(j=1; j<=((N - i ) * 2 - 1); j++)
+        {
+            printf(" ");
+        }
+
+        printf("%d", i);
+
+        // Move on to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### DIAMOND NUMBER PATTERN
+
+```c
+
+    1
+   212
+  32123
+ 4321234
+543212345
+ 4321234
+  32123
+   212
+    1
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+
+    printf("Enter N: ");
+    scanf("%d", &N);
+
+    // First upper half of the pattern
+    for(i=1; i<=N; i++)
+    {
+        // Print trailing spaces
+        for(j=1; j<=N-i; j++)
+        {
+            printf(" ");
+        }
+
+        // Print leading numbers
+        for(j=i; j>=1; j--)
+        {
+            printf("%d", j);
+        }
+
+        // Print trailing numbers
+        for(j=2; j<=i; j++)
+        {
+            printf("%d", j);
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    // Second lower half of the pattern
+    for(i=N-1; i>=1; i--)
+    {
+        // Print trailing spaces
+        for(j=1; j<=N-i; j++)
+        {
+            printf(" ");
+        }
+
+        // Print leading numbers
+        for(j=i; j>=1; j--)
+        {
+            printf("%d", j);
+        }
+
+        // Print trailing numbers
+        for(j=2; j<=i; j++)
+        {
+            printf("%d", j);
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+# STRING PATTERNS
+
+### STRING PATTERN 1
+
+```c
+
+A
+AB
+ABC
+ABCD
+ABCDE
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", j+64);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+
+### STRING PATTERN 2
+
+```c
+
+A
+BB
+CCC
+DDDD
+EEEEE
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", i+64);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### STRING PATTERN 3
+
+```c
+
+A
+BA
+CBA
+DCBA
+EDCBA
+
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=i; j>=1; j--)
+        {
+            printf("%c", j+64);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### STRING PATTERN 4
+
+```c
+
+A
+AB
+ABC
+ABCD
+ABCDE
+ABCD
+ABC
+AB
+A
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", j+64);
+        }
+
+        printf("\n");
+    }
+
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", j+64);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### STRING PATTERN 5
+
+```c
+
+A
+BB
+CCC
+DDDD
+EEEEE
+DDDD
+CCC
+BB
+A
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", i+64);
+        }
+
+        printf("\n");
+    }
+
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", i+64);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+
+### STRING PATTERN 6
+
+```c
+
+A
+BA
+CBA
+DCBA
+EDCBA
+DCBA
+CBA
+BA
+A
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=i; j>=1; j--)
+        {
+            printf("%c", j+64);
+        }
+
+        printf("\n");
+    }
+
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=i; j>=1; j--)
+        {
+            printf("%c", j+64);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### STRING PATTERN 7
+
+```c
+
+A
+BB
+CCC
+DDDD
+EEEEE
+DDDD
+CCC
+BB
+A
+
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", i+64);
+        }
+
+        printf("\n");
+    }
+
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", i+64);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### STRING PATTERN 8
+
+```c
+
+A
+AB
+ABC
+ABCD
+ABCDE
+ABCD
+ABC
+AB
+A
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    int i, j, N;
+    char str[] = "ABCDE";
+
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    int len = strlen(str);
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", str[j % len]);
+        }
+
+        printf("\n");
+    }
+
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", str[j % len]);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
