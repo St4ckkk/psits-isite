@@ -2798,3 +2798,136 @@ int main()
 
     return 0;
 }
+
+```
+
+
+```c
+
+55555
+54444
+54333
+54322
+54321
+
+
+#include <stdio.h>
+
+int main()
+{
+    int rows, cols, i, j;
+
+    /* Input rows and columns from user
+     */
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter number of columns: ");
+    scanf("%d", &cols);
+
+    for(i=1; i<=rows; i++)
+    {
+        for(j=cols; j>cols-i; j--)
+        {
+            printf("%d", j);
+        }
+
+        for(j=1; j<=cols-i; j++)
+        {
+            printf("%d", (rows - i + 1));
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+```
+
+```c
+
+12345
+23455
+34555
+45555
+55555
+
+
+#include <stdio.h>
+
+int main()
+{
+    int rows, cols, i, j;
+
+    /* Input rows and columns from user */
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter number of columns: ");
+    scanf("%d", &cols);
+
+    for(i=1; i<=rows; i++)
+    {
+        for(j=i; j<=cols; j++)
+        {
+            printf("%d", j);
+        }
+
+        for(j=i; j>1; j--)
+        {
+            printf("%d", cols);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+```
+
+### Triangle 0,1 Easy Number Patterns
+
+```c
+
+1
+01
+101
+0101
+10101
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, rows;
+
+    /* Input number of rows from user */
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+
+    for(i=1; i<=rows; i++)
+    {
+        for(j=1; j<=i; j++)
+        {
+            if((i+j) % 2 == 0)
+            {
+                printf("1");
+            }
+            else
+            {
+                printf("0");
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+
+
+
+
