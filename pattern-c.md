@@ -423,6 +423,63 @@ int main() {
 
 ```
 
+### Hollow Inverted Right Triangle Star Pattern
+
+```c
+
+*****
+*  **
+* * *
+**  *
+*****
+
+#include <stdio.h>
+
+int main() {
+    int i, j, N;
+
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    // Iterate through N rows
+    for(i=N; i>=1; i--)
+    {
+        // Print stars for each solid row
+        if(i==N || i==1)
+        {
+            for(j=1; j<=i; j++)
+            {
+                printf("*");
+            }
+        }
+        else
+        {
+            // Print star for hollow rows
+            for(j=1; j<=i; j++)
+            {
+                if(j==1 || j==i)
+                {
+                    printf("*");
+                }
+                else
+                {
+                    printf(" ");
+                }
+            }
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+
+
 ### HALF PYRAMID STAR PATTERN
 
 ```c
@@ -502,6 +559,130 @@ int main() {
 }
 
 ```
+
+### HOLLOW PYRAMID STAR PATTERN
+
+```c
+
+    *
+   * *
+  *   *
+ *     *
+*********
+
+#include <stdio.h>
+
+int main() {
+    int i, j, N;
+
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    // Iterate through N rows
+    for(i=1; i<=N; i++)
+    {
+        // Print N-i spaces
+        for(j=1; j<=N-i; j++)
+        {
+            printf(" ");
+        }
+
+        // Print stars for each solid row
+        if(i==N)
+        {
+            for(j=1; j<=2*i-1; j++)
+            {
+                printf("*");
+            }
+        }
+        else
+        {
+            // Print star for hollow rows
+            for(j=1; j<=2*i-1; j++)
+            {
+                if(j==1 || j==2*i-1)
+                {
+                    printf("*");
+                }
+                else
+                {
+                    printf(" ");
+                }
+            }
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### Hollow Inverted Pyramid Star Pattern
+
+```c
+
+*********
+ *     *
+  *   *
+   * *
+    *
+
+#include <stdio.h>
+
+int main() {
+    int i, j, N;
+
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    // Iterate through N rows
+    for(i=N; i>=1; i--)
+    {
+        // Print N-i spaces
+        for(j=1; j<=N-i; j++)
+        {
+            printf(" ");
+        }
+
+        // Print stars for each solid row
+        if(i==N)
+        {
+            for(j=1; j<=2*i-1; j++)
+            {
+                printf("*");
+            }
+        }
+        else
+        {
+            // Print star for hollow rows
+            for(j=1; j<=2*i-1; j++)
+            {
+                if(j==1 || j==2*i-1)
+                {
+                    printf("*");
+                }
+                else
+                {
+                    printf(" ");
+                }
+            }
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+
 
 
 ### PYRAMID STAR PATTERN
@@ -2534,3 +2715,86 @@ int main() {
 ```
 
 
+```c
+
+*****
+*   *
+* * *
+*   *
+*****
+
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    
+    if(n % 2 == 0)
+        n++;
+        
+    for(i = 0; i < n; i++) {
+        for(j = 0; j < n; j++) {
+            if(i == n/2 && j == n/2)
+                printf("*");
+            else if(i == 0 || i == n-1 || j == 0 || j == n-1)
+                printf("*");
+            else
+                printf(" ");
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+
+```
+
+
+### PLUS STAR PATTERN
+
+```c
+    +
+    +
+    +
+    +
++++++++++
+    +
+    +
+    +
+    +
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+
+    printf("Enter N: ");
+    scanf("%d", &N);
+
+    // Run an outer loop from 1 to N*2-1
+    for(i=1; i<=(N * 2 - 1); i++)
+    {
+        if(i == N)
+        {
+            for(j=1; j<=(N * 2 - 1); j++)
+            {
+                printf("+");
+            }
+        }
+        else
+        {
+            for(j=1; j<=N-1; j++)
+            {
+                printf(" ");
+            }
+            printf("+");
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
