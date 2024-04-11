@@ -1692,15 +1692,16 @@ ABCDE
 int main()
 {
     int i, j, N;
+    char str[] = "REYDEL"; // Replace with provided string
+    int rows = 5; // Provided number of rows
 
-    printf("Enter number of rows: ");
-    scanf("%d", &N);
+    N = rows; 
 
     for(i=1; i<=N; i++)
     {
         for(j=1; j<=i; j++)
         {
-            printf("%c", j+64);
+            printf("%c", str[j-1]);
         }
 
         printf("\n");
@@ -1727,15 +1728,16 @@ EEEEE
 int main()
 {
     int i, j, N;
+    char str[] = "REYDEL"; 
+    int rows = 5; 
 
-    printf("Enter number of rows: ");
-    scanf("%d", &N);
+    N = rows; 
 
     for(i=1; i<=N; i++)
     {
         for(j=1; j<=i; j++)
         {
-            printf("%c", i+64);
+            printf("%c", str[i-1]); 
         }
 
         printf("\n");
@@ -1762,15 +1764,15 @@ EDCBA
 int main()
 {
     int i, j, N;
+    char str[] = "REYDEL"; // Replace with provided string
+    int rows = 5; // Provided number of rows
 
-    printf("Enter number of rows: ");
-    scanf("%d", &N);
-
+    N = rows; 
     for(i=1; i<=N; i++)
     {
         for(j=i; j>=1; j--)
         {
-            printf("%c", j+64);
+            printf("%c", str[j-1]); 
         }
 
         printf("\n");
@@ -1800,15 +1802,16 @@ A
 int main()
 {
     int i, j, N;
+    char str[] = "REYDEL"; 
+    int rows = 5;
 
-    printf("Enter number of rows: ");
-    scanf("%d", &N);
+    N = rows; 
 
     for(i=1; i<=N; i++)
     {
         for(j=1; j<=i; j++)
         {
-            printf("%c", j+64);
+            printf("%c", str[j-1]); 
         }
 
         printf("\n");
@@ -1818,7 +1821,7 @@ int main()
     {
         for(j=1; j<=i; j++)
         {
-            printf("%c", j+64);
+            printf("%c", str[j-1]); 
         }
 
         printf("\n");
@@ -1848,15 +1851,15 @@ A
 int main()
 {
     int i, j, N;
+    char str[] = "REYDEL";
+    int rows = 5; 
 
-    printf("Enter number of rows: ");
-    scanf("%d", &N);
-
+    N = rows; 
     for(i=1; i<=N; i++)
     {
         for(j=1; j<=i; j++)
         {
-            printf("%c", i+64);
+            printf("%c", str[i-1]); 
         }
 
         printf("\n");
@@ -1866,7 +1869,7 @@ int main()
     {
         for(j=1; j<=i; j++)
         {
-            printf("%c", i+64);
+            printf("%c", str[i-1]); 
         }
 
         printf("\n");
@@ -1897,15 +1900,16 @@ A
 int main()
 {
     int i, j, N;
+    char str[] = "REYDEL"; 
+    int rows = 5; 
 
-    printf("Enter number of rows: ");
-    scanf("%d", &N);
+    N = rows; 
 
     for(i=1; i<=N; i++)
     {
         for(j=i; j>=1; j--)
         {
-            printf("%c", j+64);
+            printf("%c", str[j-1]);
         }
 
         printf("\n");
@@ -1915,7 +1919,7 @@ int main()
     {
         for(j=i; j>=1; j--)
         {
-            printf("%c", j+64);
+            printf("%c", str[j-1]); 
         }
 
         printf("\n");
@@ -1946,15 +1950,16 @@ A
 int main()
 {
     int i, j, N;
+    char str[] = "REYDEL"; 
+    int rows = 5; 
 
-    printf("Enter number of rows: ");
-    scanf("%d", &N);
+    N = rows; 
 
     for(i=1; i<=N; i++)
     {
         for(j=1; j<=i; j++)
         {
-            printf("%c", i+64);
+            printf("%c", str[i-1]); 
         }
 
         printf("\n");
@@ -1964,7 +1969,7 @@ int main()
     {
         for(j=1; j<=i; j++)
         {
-            printf("%c", i+64);
+            printf("%c", str[i-1]); 
         }
 
         printf("\n");
@@ -1995,10 +2000,9 @@ A
 int main()
 {
     int i, j, N;
-    char str[] = "ABCDE";
-
-    printf("Enter number of rows: ");
-    scanf("%d", &N);
+    char str[] = "REYDEL"; 
+    int rows = 5;
+    N = rows; 
 
     int len = strlen(str);
 
@@ -2006,7 +2010,7 @@ int main()
     {
         for(j=1; j<=i; j++)
         {
-            printf("%c", str[j % len]);
+            printf("%c", str[j % len - 1]); 
         }
 
         printf("\n");
@@ -2016,7 +2020,7 @@ int main()
     {
         for(j=1; j<=i; j++)
         {
-            printf("%c", str[j % len]);
+            printf("%c", str[j % len - 1]); 
         }
 
         printf("\n");
@@ -2026,3 +2030,507 @@ int main()
 }
 
 ```
+
+### STRING PATTERN 9
+
+```c
+
+A
+BB
+CCC
+DDDD
+EEEEE
+DDDD
+CCC
+BB
+A
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+    char str[] = "REYDEL"; 
+    int rows = 5; 
+
+    N = rows; 
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", str[i-1]); 
+        }
+
+        printf("\n");
+    }
+
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", str[i-1]); 
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### STRING PATTERN 10
+
+```c
+
+A
+BA
+CBA
+DCBA
+EDCBA
+DCBA
+CBA
+BA
+A
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+    char str[] = "REYDEL"; 
+    int rows = 5; 
+
+    N = rows; 
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=i; j>=1; j--)
+        {
+            printf("%c", str[j-1]); 
+        }
+
+        printf("\n");
+    }
+
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=i; j>=1; j--)
+        {
+            printf("%c", str[j-1]); 
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### STRING PATTERN 11
+
+```c
+
+A
+BB
+CCC
+DDDD
+EEEEE
+DDDD
+CCC
+BB
+A
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+    char str[] = "REYDEL"; 
+    int rows = 5; 
+
+    N = rows; 
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", str[i-1]); 
+        }
+
+        printf("\n");
+    }
+
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", str[i-1]); 
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### STRING PATTERN 12
+
+```c
+
+A
+AB
+ABC
+ABCD
+ABCDE
+ABCD
+ABC
+AB
+A
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+    char str[] = "REYDEL"; 
+    int rows = 5; 
+
+    N = rows; 
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", str[j-1]); 
+        }
+
+        printf("\n");
+    }
+
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", str[j-1]); 
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+
+### STRING PATTERN 13
+
+```c
+
+A
+BA
+CBA
+DCBA
+EDCBA
+DCBA
+CBA
+BA
+A
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+    char str[] = "REYDEL"; 
+    int rows = 5; 
+
+    N = rows; 
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=i; j>=1; j--)
+        {
+            printf("%c", str[j-1]); 
+        }
+
+        printf("\n");
+    }
+
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=i; j>=1; j--)
+        {
+            printf("%c", str[j-1]); 
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### STRING PATTERN 14
+
+```c
+
+A
+BB
+CCC
+DDDD
+EEEEE
+DDDD
+CCC
+BB
+A
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+    char str[] = "REYDEL"; 
+    int rows = 5; 
+
+    N = rows; 
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", str[i-1]); 
+        }
+
+        printf("\n");
+    }
+
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", str[i-1]); 
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### STRING PATTERN 15
+
+```c
+
+A
+AB
+ABC
+ABCD
+ABCDE
+ABCD
+ABC
+AB
+A
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+    char str[] = "REYDEL"; 
+    int rows = 5; 
+
+    N = rows; 
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", str[j-1]); 
+        }
+
+        printf("\n");
+    }
+
+    for(i=N-1; i>=1; i--)
+    {
+        for(j=1; j<=i; j++)
+        {
+            printf("%c", str[j-1]); 
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### STRING X PATTERN
+
+```c
+
+A       A
+ B     B
+  C   C
+   D D
+    E
+   D D
+  C   C
+ B     B
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+    char str[] = "REYDEL"; 
+    int rows = 5; 
+
+    N = rows; 
+
+    for(i=1; i<=N; i++)
+    {
+        for(j=1; j<i; j++)
+        {
+            printf(" ");
+        }
+
+        printf("%c", str[i-1]);
+
+        for(j=1; j<=2*(N-i)-1; j++)
+        {
+            printf(" ");
+        }
+
+        if(i != N)
+            printf("%c", str[i-1]);
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### STRING 8 PATTERN
+
+```c
+
+A       A
+AB     BA
+ABC   CBA
+ABCD DCBA
+ABCDEEDCBA
+ABCD DCBA
+ABC   CBA
+AB     BA
+A       A
+
+#include <stdio.h>
+
+int main()
+{
+    int i, j, N;
+    char str[] = "REYDEL"; 
+    int rows = 5; 
+
+    N = rows; 
+
+    for(i=1; i<=N; i++)
+    {
+        printf("%c", str[i-1]);
+
+        for(j=1; j<=2*(N-i); j++)
+        {
+            printf(" ");
+        }
+
+        if(i != 1)
+            printf("%c", str[i-1]);
+
+        printf("\n");
+    }
+
+    for(i=N-1; i>=1; i--)
+    {
+        printf("%c", str[i-1]);
+
+        for(j=1; j<=2*(N-i); j++)
+        {
+            printf(" ");
+        }
+
+        if(i != 1)
+            printf("%c", str[i-1]);
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+### STRING 8 DIAMOND PATTERN
+
+```c
+
+     R
+    RER
+   REYER
+  REYDYER
+ REYDEDYER
+REYDELEDYER
+ REYDEDYER
+  REYDYER
+   REYER
+    RER
+     R
+
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[] = "REYDEL"; // Replace with your string
+    int len = strlen(str);
+    int rows = len * 2 - 1; // Number of rows in the diamond
+
+    for (int i = 0; i < rows; i++) {
+        int spaces = i < len ? len - i - 1 : i - len + 1; // Calculate spaces
+
+        // Print leading spaces
+        for (int j = 0; j < spaces; j++) {
+            printf(" ");
+        }
+
+        // Print characters in increasing order
+        for (int j = 0; j < len - spaces; j++) {
+            printf("%c", str[j]);
+        }
+
+        // Print characters in decreasing order
+        for (int j = len - spaces - 2; j >= 0; j--) {
+            printf("%c", str[j]);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
+
+
